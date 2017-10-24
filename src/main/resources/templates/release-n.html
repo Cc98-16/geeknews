@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <title>文章详情</title>
-<link rel="stylesheet" href="../static/css/release-n.css">
-<link rel="stylesheet" href="../static/fonts/font-awesome.min.css">
-<link rel="stylesheet" href="../static/css/bootstrap.css">
+<link rel="stylesheet" href="../static/css/release-n.css" th:href="@{/css/release-n.css}">
+<link rel="stylesheet" href="../static/fonts/font-awesome.min.css" th:href="@{/css/fonts/font-awesome.min.css}">
+<link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
 </head>
 
 <body>
@@ -48,14 +48,14 @@
             如果想要成为一个优秀前端开发工程师，拿高薪，获得“铁饭碗”，系统化的教学和指导是必不可少的。零基础或者想要提升前端技术的你，达妹建议你先学个免费的课程，测试一下自己是否适合web前端，期待与正再学习前端开发or打算学习前端开发的你一起交流。</p>
     </div>
     <div class="footer-bar">
-        <div class="user-photo"> <img src="../static/images/user.jpg" class="avatar" alt=""> </div>
+        <div class="user-photo"> <img src="/images/user.jpg" class="avatar" alt=""> </div>
         <div class="user-right"> <a href="#" class="user-name">枯骨树先生</a>
             <div class="information"><span>发布于</span><a href="#">前端</a><span>2017-10-24 16:20</span></div>
         </div>
     </div>
 </div>
 <div style="height: 60px;"></div>
-<script src="../static/js/jquery.min.js"></script> 
-<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>

@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <title>文章发布</title>
-<link rel="stylesheet" href="../static/css/release.css" />
-<link rel="stylesheet" href="../static/css/bootstrap.css">
-<link rel="stylesheet" href="../static/fonts/font-awesome.min.css">
-<link rel="stylesheet" href="../static/js/editor_md/css/editormd.css" />
+<link rel="stylesheet" href="../static/css/release.css" th:href="@{/css/release.css}"/>
+<link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+<link rel="stylesheet" href="../static/fonts/font-awesome.min.css" th:href="@/fonts/font-awesome.min.css}">
+<link rel="stylesheet" href="../static/js/editor_md/css/editormd.css" th:href="@{/js/editor_md/css/editormd.css}" />
 </head>
 <body>
 <div class="container">
@@ -33,9 +33,9 @@
         <div class="release"> <a href="#" class="btn btn-default btn-primary" style="float: right">发布文章</a> </div>
     </div>
 </div>
-<script src="../static/js/jquery.min.js"></script> 
-<script src="../static/js/bootstrap.min.js"></script> 
-<script src="../static/js/editor_md/editormd.min.js"></script> 
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script> 
+<script src="../static/js/editor_md/editormd.min.js" th:src="@{/js/editor_md/editormd.min.js}"></script> 
 <!-- makedown --> 
 <script type="text/javascript">
       var testEditor;
