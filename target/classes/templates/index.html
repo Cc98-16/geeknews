@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <title>index</title>
-<link rel="stylesheet" href="../static/css/index.css">
-<link rel="stylesheet" href="../static/fonts/font-awesome.min.css">
-<link rel="stylesheet" href="../static/css/bootstrap.css">
+<link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
+<link rel="stylesheet" href="../static/fonts/font-awesome.min.css" th:href="@{/fonts/font-awesome.min.css}">
+<link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
 </head>
 
 <body>
 <div class="geek">
   <div class="left-container">
     <div class="left-layout-container">
-      <div class="user-info"> <img src="../static/images/user.jpg" alt="" class="user-img">
+      <div class="user-info"> <img src="/images/user.jpg" alt="" class="user-img">
         <div class="login-name">Eric</div>
         <div>这是一句个人简介，一点都不长对吧。</div>
       </div>
@@ -185,7 +185,7 @@
     </div>
   </div>
 </div>
-<script src="../static/js/jquery-3.2.0.min.js"></script>
-<link rel="stylesheet" href="../static/js/bootstrap.min.js">
+<script src="../static/js/jquery-3.2.0.min.js" th:src="@{/js/jquery-3.2.0.min.js}"></script> 
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>
