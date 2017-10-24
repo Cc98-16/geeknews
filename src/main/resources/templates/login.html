@@ -15,21 +15,71 @@
         <h3>极客头条</h3>
       </div>
       <p>Sign into your pages account</p>
-      <form action="">
+      <form name="login" action="http://10.1.65.33:81/login" method="post">
         <div class="form-group">
-          <label class="sr-only" for="inputEmail">邮件地址</label>
-          <input type="email" class="form-control" id="inputEmail" name="username" placeholder="输入账号" autofocus>
+          <label class="sr-only" for="inputEmail">账号</label>
+          <input type="text" class="form-control" id="inputAccount" name="account" placeholder="输入账号" autofocus>
+          <div data-error="account" style="color:#FF0000"></div>
         </div>
         <div class="form-group">
           <label class="sr-only" for="inputPassword">密码</label>
-          <input type="password" class="form-control" id="inputPassword" name="password" placeholder="密码" autocomplete="off">
+          <input type="password" class="form-control" id="inputPassword" name="password" placeholder="输入密码" autocomplete="off">
+          <div data-error="password" style="color:#FF0000"></div>
         </div>
         <button type="submit" class="btn btn-primary btn-block" d="login">登录</button>
       </form>
     </div>
   </div>
 </div>
-<script src="../static/js/jquery-3.2.0.min.js" th:src="@{/js/jquery-3.2.0.min.js}"></script> 
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery-3.2.0.min.js}"></script> 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="../static/js/base.js" th:src="@{/js/base.js}"></script>
+<script type="text/javascript">
+	$(function() {
+		$(document).on("click", "#login", function(e){
+			var form = $(this).parents("form");
+			var url = $(form).attr("action");
+			var data = $(form).serialize()
+			$("[data-error]").html(""); 
+			$.post(url, data, function(json) {
+				if(json.code == 200) {
+					$.post("/login", {"id":json.data.id, "account":json.data.account}, function(json) {
+						window.location.href = json;
+					})
+				} else if (json.code == 412){
+					console.log(11111);
+					if(json.error != null) {
+						$.each(json.error, function(name, message) {
+	    					var name = "[data-error='"+name+"']";
+	    					console.log(name);
+	    					switch(message) {
+	    					case "user.passwd.length.error" :
+	    						message = "密码长度过短";
+	    						break;
+	    					case "user.account.format.error" :
+	    						message = "没有找到此账号";
+	    						break;
+	    					case "user.passwd.isnull" :
+	    						message = "密码不能为空";
+	    						break;
+	    					case "user.account.isnull" :
+	    						message = "账号不能为空";
+	    						break;
+	    					}
+		                    $(name).html(message);
+		    			});
+					} else {
+						$("[data-error='password']").html("账号或密码错误");
+					}
+	        		
+				}else {
+					$("[data-error='password']").html("账号或密码错误");
+				}
+	// 				window.location.href = json.tourl;
+			}, "json");
+		});
+	})
+
+</script>
 </body>
 </html>
