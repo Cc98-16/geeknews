@@ -156,8 +156,9 @@
   /* IE >9, FF >15, Opera >12.0 */
 }
 .editormd-menu > li > a:hover, .editormd-menu > li > a.active {
-  border: 1px solid #ddd;
-  background: #eee;
+  border: 1px solid #2e6da4;
+  background: #0f88eb;
+  color: #fff;
 }
 .editormd-menu > li > a > .fa {
   text-align: center;
