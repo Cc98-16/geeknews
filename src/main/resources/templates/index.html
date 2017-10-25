@@ -20,8 +20,8 @@
                 <li class="">
                     <div class="to_pub text-center"><a href="/newsinput" class="start_cmmde"> <i class="fa fa-link"></i><span>发布文章</span> </a></div>
                 </li>
-                <li class="theme-menu"> <span class="toggle-subnav">热门主题</span> <i class="fa fa-angle-down"></i>
-                    <dl class="hot_forum">
+                <li class="theme-menu"> <span class="toggle-subnav">热门主题</span> <a href="#" class="flip"><i class="fa fa-angle-down"></i></a>
+                    <dl class="hot_forum start">
                         <a href="#" title="物联网（IoT）"> <img src="/images/loT.jpg" alt=""> </a> <a href="#" title="Android开发者"> <img src="/images/android.png" alt=""> </a> <a href="#" title="Java开发者"> <img src="/images/java.jpg" alt=""> </a> <a href="#" title="安全"> <img src="/images/security.jpg" alt=""> </a> <a href="#" title="潜水猿"> <img src="/images/cry.jpeg" alt=""> </a>
                     </dl>
                 </li>
@@ -38,7 +38,7 @@
                     <a class="navbar-brand" href="#">Geek News</a> </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">个人主页<span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="#">个人主页</a></li>
                         <li><a href="#">发布文章</a></li>
                         <li><a href="#">发布图文</a></li>
                         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">热门主题<span class="caret"></span></a>
@@ -380,6 +380,18 @@
     </div>
 </div>
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
-<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script> 
+<script>
+	function F_Open_dialog() 
+{ 
+document.getElementById("btn_file").click(); 
+}
+	 
+$(document).ready(function(){
+$(".flip").click(function(){
+$(".start").toggle(500);
+});
+});
+</script>
 </body>
 </html>
