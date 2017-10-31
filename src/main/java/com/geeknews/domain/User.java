@@ -4,6 +4,7 @@ public class User {
 	
 	private String id;
 	private String account;
+	
 	public String getId() {
 		return id;
 	}
@@ -16,6 +17,5 @@ public class User {
 	public void setAccount(String account) {
 		this.account = account;
 	}
-	
 	
 }

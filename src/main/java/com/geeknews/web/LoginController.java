@@ -19,13 +19,13 @@ public class LoginController extends BaseController{
 	@PostMapping("/login")
 	public String login(HttpSession session, String id, String account) {
 		if(StringUtils.isNoneBlank(id, account)) {
-			session.setAttribute("sessuserid", id);
-			session.setAttribute("sessuseraccount", account);
+			session.setAttribute("seuserid", id);
+			session.setAttribute("seuseraccount", account);
 		}
 		return "/";
 	}
 	
-	/*@ResponseBody
+/*	@ResponseBody
 	@PostMapping("/login")
 	public Result login(HttpSession session,@RequestParam("")String account,@RequestParam("")String password)throws Exception{
 		String url = "http://10.1.65.33:81/login";
