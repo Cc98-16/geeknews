@@ -16,23 +16,24 @@
             <h1>文章发布</h1>
         </header>
         <form class="form-group release-form">
-            <input type="text" class="form-control release-title" placeholder="输入标题">
-            <input type="text" class="form-control release-label" placeholder="文章标签">
-            <select class="form-control ralease-theme">
+            <input type="text" name="title" class="form-control release-title" placeholder="输入标题">
+            <!-- <input type="text" class="form-control release-label" placeholder="文章标签"> -->
+            <select class="form-control ralease-theme" name="themeid">
                 <option>主题1</option>
                 <option>主题2</option>
                 <option>主题3</option>
                 <option>主题4</option>
                 <option>主题5</option>
             </select>
-        </form>
-        <div id="layout">
+       
+        <div id="layout" style="margin-top:30px;">
             <div id="test-editormd">
                 <textarea style="display:none;"></textarea>
             </div>
         </div>
         
         <div class="release"></a> <a href="#" class="btn btn-default btn-primary" style="float: right">发布文章</a> <a href="/" class="btn btn-default" style="float:right;margin-right:5px;">取消</a></div>
+         </form>
     </div>
 </div>
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
