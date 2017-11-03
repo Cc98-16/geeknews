@@ -17,7 +17,7 @@ $(function() {
 	   	})
     })
     
-	$(document).on("click", "[name='submit']", function(e){
+/*	$(document).on("click", "[name='submit']", function(e){
 		var form = $(this).parents("form");
 		var url = $(form).attr("action");
 		var data = $(form).serialize()
@@ -38,5 +38,28 @@ $(function() {
 				window.location.href = json.tourl;
 			}
 		}, "json");
-	});
+	});*/
+    
+    $(document).on("click","[name='submit']",function(e){
+    	var form = $(this).parents("form");
+    	var url = $(form).attr("action");
+    	var data = $(form).serialize();
+    	$("[data-error]").html("");
+    	$.post(url,data,function(json){
+    		var result = 1;
+    		if(typeof(json.tourl) == "undefined" || json.tourl == ""){
+    			$.each(json,function(code,msg){
+    				if(code != "tourl"){
+    					result = 2;
+    					var name = "[data-error='"+code+"']";
+    					if($(name).length > 0){
+    						$(name).html(msg);
+    					};
+    				};
+    			});
+    		}else if (result == 1 && json.tourl != ""){
+    			window.location.href = json.tourl;
+    		};
+    	},"json");
+    });
 });

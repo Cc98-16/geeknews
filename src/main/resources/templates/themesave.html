@@ -5,10 +5,14 @@
 <title>新增类别</title>
 </head>
 <body>
-<form id="form1" method="post" th:action="@{/themesave}">
+<form id="form" method="post" th:action="@{/themesave}">
 添加新的主题：
-<h5>名称：<input type="text" name="themename" id="name"><div data-error="themename" style="color:#FF0000"></div></h5>
-<input type="submit" name="submit" value="保存新的主题">
+<h5>主题名称：<input type="text" name="themename" id="name"><div data-error="themename" style="color:#FF0000"></div></h5>
+<h5>主题描述：<input type="text" name="tdescription" id="name"><div data-error="tdescription" style="color:#FF0000"></div></h5>
+<input type="button" name="submit" value="保存新的主题">
 </form>
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script> 
+<script th:src="@{/js/base.js}"></script>
 </body>
 </html>

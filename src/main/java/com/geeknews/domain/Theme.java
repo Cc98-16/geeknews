@@ -13,12 +13,14 @@ public class Theme {
 	@Id
 	private String id;
 	
-	private String themename;
+	private String themename;		//主题名称
+	
+	private String tdescription;	//主题描述
 
 	public void init(){
 		this.id = ID.uuid();
 	}
-	
+
 	public String getId() {
 		return id;
 	}
@@ -34,6 +36,13 @@ public class Theme {
 	public void setThemename(String themename) {
 		this.themename = themename;
 	}
-	
+
+	public String getTdescription() {
+		return tdescription;
+	}
+
+	public void setTdescription(String tdescription) {
+		this.tdescription = tdescription;
+	}
 	
 }

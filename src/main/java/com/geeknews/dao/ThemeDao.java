@@ -1,5 +1,8 @@
 package com.geeknews.dao;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Property;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -7,6 +10,7 @@ import com.geeknews.domain.Theme;
 @Repository
 @Transactional
 public class ThemeDao extends BaseDao<Theme>{
+	
 	public void save(Theme theme) {
 		log.debug("saving Event instance");
 		try {
@@ -14,6 +18,17 @@ public class ThemeDao extends BaseDao<Theme>{
 			log.debug("save successful");
 		} catch (RuntimeException re) {
 			log.error("save failed", re);
+			throw re;
+		}
+	}
+	
+	public Theme findbytname(String tname){
+		try {
+			DetachedCriteria dc = DetachedCriteria.forClass(Theme.class);
+			dc.add(Property.forName("themename").eq(tname));
+			Criteria criteria = dc.getExecutableCriteria(getSession());
+			return (Theme) criteria;
+		} catch (RuntimeException re) {
 			throw re;
 		}
 	}

@@ -16,6 +16,11 @@ public class ThemeService {
 	
 	public void ThemeSave(ThemeForm themeForm){
 		try {
+			String tname = themeForm.getThemename();
+			
+			/*Theme theme = themeDao.findbytname(tname);*/
+			
+			
 			Theme theme = new Theme();
 			
 			theme.init();
