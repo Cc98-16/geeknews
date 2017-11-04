@@ -1,5 +1,7 @@
 package com.geeknews.dao;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Property;
@@ -22,12 +24,12 @@ public class ThemeDao extends BaseDao<Theme>{
 		}
 	}
 	
-	public Theme findbytname(String tname){
+	public List<Theme> findbytname(String tname){
 		try {
 			DetachedCriteria dc = DetachedCriteria.forClass(Theme.class);
 			dc.add(Property.forName("themename").eq(tname));
 			Criteria criteria = dc.getExecutableCriteria(getSession());
-			return (Theme) criteria;
+			return criteria.list();
 		} catch (RuntimeException re) {
 			throw re;
 		}

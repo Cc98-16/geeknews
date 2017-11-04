@@ -1,5 +1,7 @@
 package com.geeknews.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.BeanUtils;
@@ -14,20 +16,21 @@ public class ThemeService {
 	@Resource
 	private ThemeDao themeDao;
 	
-	public void ThemeSave(ThemeForm themeForm){
+	public void ThemeSave(ThemeForm themeForm,String tname){
 		try {
-			String tname = themeForm.getThemename();
-			
-			/*Theme theme = themeDao.findbytname(tname);*/
-			
-			
-			Theme theme = new Theme();
-			
-			theme.init();
-			
-			BeanUtils.copyProperties(themeForm, theme,Theme.class);
-			
-			themeDao.save(theme);
+			List<Theme> themename = themeDao.findbytname(tname);
+			if(themename!=null && !themename.isEmpty()){
+				throw new ServiceException("主题已存在，请勿重复重建");
+			}else{
+				Theme theme = new Theme();
+				
+				theme.init();
+				
+				BeanUtils.copyProperties(themeForm, theme,Theme.class);
+				
+				themeDao.save(theme);
+			}
+
 		} catch (ServiceException e) {
 			throw e;
 		}
