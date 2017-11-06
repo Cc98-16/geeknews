@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.geeknews.dao.ThemeDao;
 import com.geeknews.domain.Theme;
+import com.geeknews.utils.MyPage;
 import com.geeknews.utils.ServiceException;
 import com.geeknews.valid.ThemeForm;
 @Service
@@ -20,7 +21,7 @@ public class ThemeService {
 		try {
 			List<Theme> themename = themeDao.findbytname(tname);
 			if(themename!=null && !themename.isEmpty()){
-				throw new ServiceException("主题已存在，请勿重复重建");
+				throw new ServiceException("themename","主题已存在，请勿重复重建");
 			}else{
 				Theme theme = new Theme();
 				
@@ -34,6 +35,13 @@ public class ThemeService {
 		} catch (ServiceException e) {
 			throw e;
 		}
-		
+	}
+	
+	public MyPage<Theme> findAll(String keyword,int page,int pagesize){
+		try{
+			return themeDao.findAll(keyword,page,pagesize);		
+		}catch(ServiceException e){
+			throw e;
+		}
 	}
 }

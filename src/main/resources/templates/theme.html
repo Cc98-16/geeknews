@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../static/css/base.css" th:href="@{/css/base.css}">
+<link rel="stylesheet" href="../static/css/material-icons.css" th:href="@{/css/material-icons.css}">
+<link rel="stylesheet" href="../static/css/material.min.css" th:href="@{/css/material.min.css}">
+</head>
+<body>
+全部主题：
+<div th:each="theme,status:${ps?.items}">
+<h5 th:text="${theme?.themename}"></h5>
+</div>
+<div th:replace="base :: pagination"></div>
+</body>
+</html>

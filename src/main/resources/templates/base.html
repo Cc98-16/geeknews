@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head xmlns:th="http://www.thymeleaf.org"></head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <!-- pagination-->
+    <div class="mdl-cell mdl-cell--12-col text-left materialdfenye" th:fragment="pagination" th:if="${ps.totalcount != 0}">
+        <ul class="pagination">
+            <li>
+                <a th:href="|?page=${ps.pre}|" aria-label="上一页">
+                    <i class="material-icons">keyboard_arrow_left</i>
+                </a>
+            </li>
+            <li th:each="page,row:${ps?.pages}" th:class="${page eq ps.page} ? 'active'">
+                <a th:href="|?page=${page}|" th:text="${page}">1</a>
+            </li>
+            <li class="active" th:remove="all"><a href="?page=1">1</a></li>
+            <li th:remove="all"><a href="?page=2">2</a></li>
+            <li th:remove="all"><a href="?page=3">3</a></li>
+            <li th:remove="all"><a href="?page=4">4</a></li>
+            <li th:remove="all"><a href="?page=5">5</a></li>
+            <li>
+                <a th:href="|?page=${ps.next}|" aria-label="下一页">
+                    <i class="material-icons">keyboard_arrow_right</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- pagination end-->
+</body>
+</html>
