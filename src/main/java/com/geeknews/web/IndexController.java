@@ -1,12 +1,20 @@
 package com.geeknews.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.geeknews.service.ThemeService;
 @Controller
-public class IndexController {
+public class IndexController extends BaseController{
+
+	@Autowired
+	private ThemeService themeService;
 	
 	@GetMapping("/")
-	public String Index(){
+	public String Index(Model model){
+		model.addAttribute("ps",themeService.findAll(keyword, page, pagesize));
 		return "index";
 	}
 }

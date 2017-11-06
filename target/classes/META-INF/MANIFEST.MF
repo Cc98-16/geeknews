@@ -1,13 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: geeknews
 Implementation-Version: 0.0.1-SNAPSHOT
-<<<<<<< HEAD
-Built-By: LinXx
-=======
 Built-By: Ccsy
->>>>>>> 52270e476e37b82738d481eb4b7110c0455864fa
 Implementation-Vendor-Id: com.geeknews
-Build-Jdk: 1.8.0_51
+Build-Jdk: 1.8.0_112
 Implementation-URL: http://projects.spring.io/spring-boot/geeknews/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
