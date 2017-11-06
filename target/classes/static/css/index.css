@@ -131,14 +131,48 @@ a {
 	-ms-flex-direction: column;
 	flex-direction: column;
 	color: #4b595f;
-	margin-top: 30px;
+	margin-top: 20px;
 	padding: 0;
+}
+.returnleft{
+	cursor: pointer;
+	margin-top: 20px;
+}
+.returnleft i{
+	margin-right: 10px;
 }
 .left-menu li {
 	width: 100%;
 	line-height: 60px;
 	cursor: pointer;
 	font-size: 16px;
+}
+.left-menu .theme-menua{
+    line-height: 10px;
+    margin-top: 35px;
+}
+.left-alltheme img{
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+.theme-per{
+	line-height: 22px;
+	margin-left: 50px;
+	font-size: 12px;
+    color: #555;
+}
+.theme-per div{
+	font-size: 16px;
+	margin-left: 5px;
+}
+.theme-per i{
+	margin: 0 5px;
+	color: #b7c7d3;
+}
+.left-alltheme{
+	margin-top: 10px;
+	padding: 0 20px;
 }
 /*****发布******/
 .to_pub .start_cmmde {
@@ -157,6 +191,9 @@ a {
 	font-size: 1em;
 	margin-left: 10px;
 }
+.toggle-subnav a{
+	color:#4b595f;
+}
 .theme-menu {
 	position: relative;
 	padding: 10px 0;
@@ -171,7 +208,7 @@ a {
 }
 /*****热门话题****/
 .hot_forum {
-	margin: 20px -10px;
+	/* margin: 20px -10px; */
 }
 .hot_forum a {
 	display: block;
