@@ -3,16 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <title>新增类别</title>
+<link rel="stylesheet" href="../static/css/release.css" th:href="@{/css/release.css}"/>
+<link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+<link rel="stylesheet" href="../static/fonts/font-awesome.min.css" th:href="@{/fonts/font-awesome.min.css}">
 </head>
 <body>
-<form id="form" method="post" th:action="@{/themesave}">
-添加新的主题：
-<h5>主题名称：<input type="text" name="themename" id="name"><div data-error="themename" style="color:#FF0000"></div></h5>
-<h5>主题描述：<input type="text" name="tdescription" id="name"><div data-error="tdescription" style="color:#FF0000"></div></h5>
-<input type="button" name="submit" value="保存新的主题">
-</form>
+
+<div class="release-card thsave-500">
+        <header>
+            <h1>添加新的主题：</h1>
+        </header>
+        <form class="form-group release-form" th:action="@{/themesave}">
+            <input type="text" name="themename" class="form-control release-title" placeholder="输入主题名称">
+            <input type="text" name="tdescription" class="form-control release-title" placeholder="输入主题描述">
+            <!-- <input type="text" class="form-control release-label" placeholder="文章标签"> -->
+       
+        
+        <div class="release"></a> <a href="#" class="btn btn-default btn-primary" style="float: right">保存新的主题</a> <a href="Javascript: void(0)" id="thsave-close" class="btn btn-default" style="float:right;margin-right:5px;">取消</a></div>
+         </form>
+    </div>
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script> 
 <script th:src="@{/js/base.js}"></script>
+<script type="text/javascript">
+  document.getElementById("thsave-close").onclick=function(){
+    window.parent.document.getElementById("intc-them").style.display="none";
+  }
+ </script>
 </body>
 </html>
