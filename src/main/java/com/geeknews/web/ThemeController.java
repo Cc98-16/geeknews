@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.geeknews.domain.Theme;
 import com.geeknews.service.ThemeService;
 import com.geeknews.utils.MyPage;
+import com.geeknews.utils.Result;
 import com.geeknews.valid.ThemeForm;
 
 @Controller
@@ -32,7 +33,7 @@ public class ThemeController extends BaseController{
 	public Map<String, Object> ThemeSave(@Valid ThemeForm themeForm){
 		String tname = themeForm.getThemename();
 		themeService.ThemeSave(themeForm,tname);
-		return null;
+		return Result.toUrl("/");
 	}
 	
 	@GetMapping(value = "/theme")

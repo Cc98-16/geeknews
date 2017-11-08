@@ -8,6 +8,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.geeknews.utils.ID;
+import com.geeknews.utils.Time;
+
 @Entity
 @Table(name="geeknews")
 public class Geeknews {
@@ -27,6 +30,11 @@ public class Geeknews {
 	
 	@CreationTimestamp
 	private Timestamp ctime;	//发布时间
+	
+	public void init(){
+		this.id = ID.uuid();
+		this.ctime = Time.timestamp();
+	}
 
 	public String getId() {
 		return id;

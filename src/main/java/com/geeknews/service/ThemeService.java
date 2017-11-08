@@ -14,6 +14,7 @@ import com.geeknews.utils.ServiceException;
 import com.geeknews.valid.ThemeForm;
 @Service
 public class ThemeService {
+	
 	@Resource
 	private ThemeDao themeDao;
 	
@@ -21,7 +22,7 @@ public class ThemeService {
 		try {
 			List<Theme> themename = themeDao.findbytname(tname);
 			if(themename!=null && !themename.isEmpty()){
-				throw new ServiceException("themename","主题已存在，请勿重复重建");
+				throw new ServiceException("themename","主题已存在，请勿重复创建");
 			}else{
 				Theme theme = new Theme();
 				

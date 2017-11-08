@@ -6,24 +6,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.geeknews.domain.User;
 
 
 
 public class BaseController {
 	
 	protected String seuserid;
-	protected User seuser;
 	protected String keyword;
 	protected int pagesize;
 	protected int page;
 	
 	@ModelAttribute
 	public void getSeuserid(HttpSession httpSession) {
-		seuser = (User) httpSession.getAttribute("seuser");
-		if(seuser != null) {
-			seuserid = seuser.getId();
-		}
+		seuserid =  (String) httpSession.getAttribute("seuserid");
 	}
 	
 	@ModelAttribute

@@ -15,30 +15,30 @@
         <header>
             <h1>文章发布</h1>
         </header>
-        <form class="form-group release-form">
+        <form class="form-group release-form" th:action="@{/newsinput}">
             <input type="text" name="title" class="form-control release-title" placeholder="输入标题">
-            <!-- <input type="text" class="form-control release-label" placeholder="文章标签"> -->
-            <select class="form-control ralease-theme" name="themeid">
-                <option>主题1</option>
-                <option>主题2</option>
-                <option>主题3</option>
-                <option>主题4</option>
-                <option>主题5</option>
+            <div data-error="title" style="color:#FF0000"></div>
+            
+            <select class="form-control ralease-theme" name="classificationid" >
+                <option  th:each="theme,status:${ps?.items}" th:text="${theme?.themename}" th:value="${theme?.id}" ></option>
             </select>
        
         <div id="layout" style="margin-top:30px;">
             <div id="test-editormd">
-                <textarea style="display:none;"></textarea>
+                <textarea style="display:none;" name="content"></textarea>
             </div>
+            <div data-error="content" style="color:#FF0000"></div>
         </div>
         
-        <div class="release"></a> <a href="#" class="btn btn-default btn-primary" style="float: right">发布文章</a> <a href="/" class="btn btn-default" style="float:right;margin-right:5px;">取消</a></div>
+        <div class="release"><input type="button" name="submit" class="btn btn-primary" style="float:right;" value="创建主题"><a href="/" class="btn btn-default" style="float:right;margin-right:5px;">取消</a></div>
          </form>
     </div>
 </div>
+
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script> 
 <script src="../static/js/editor_md/editormd.min.js" th:src="@{/js/editor_md/editormd.min.js}"></script> 
+<script th:src="@{/js/base.js}"></script>
 <!-- makedown --> 
 <script type="text/javascript">
       var testEditor;
