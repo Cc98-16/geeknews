@@ -102,7 +102,7 @@
 	                <li class="">
 	                    <div class="to_pub text-center" data-toggle="modal" data-target="#exampleModal"><a href="Javascript: void(0)" class="start_cmmde"> <i class="fa fa-plus"></i><span>申请创建主题</span> </a></div>
 	                </li>
-	                <li class="theme-menu" th:each="theme,status:${ps?.items}">
+	                <li class="theme-menu" th:each="theme,status:${theme}">
 	                	<div class="left-alltheme" >
 	                		<img src="/images/loT.jpg" alt="">
 	                		<div class="theme-per"> 
@@ -158,18 +158,18 @@
             <li><span class="tag tag-unchecked">重要: ★★★</span></li>
             <li><span class="tag tag-unchecked">重要: ★★★</span></li>
         </ul>
-        <div class="blog-list-container">
+        <div class="blog-list-container" >
             <div id="geek_list">
-                <dl class="geek_list" id="">
+                <dl class="geek_list" id="" th:each="news,iterStat : ${ps?.items}">
                     <dt class="left">
                         <div class="news_vote" voteid="240709"> <i class="fa fa-sort-up" datatype="up"></i>
                             <div class="count"> 0 </div>
                             <i class="fa fa-sort-down" datatype="down"></i> </div>
                     </dt>
-                    <dd data-dsm="post" data-poputype="feed" data-feed-show="true" class="tracking-ad" data-mod="popu_81">
+                    <dd data-dsm="post" data-poputype="feed" data-feed-show="true" class="tracking-ad" data-mod="popu_81" >
                         <div class="list_ad"> <span> <a data-pjax="" class="link_pjax" tabindex="0" href="#" title="点击查看详情" target="_blank"></a> </span> </div>
                         <div class="list_ad_mobile"> <span> <a class="link_pjax" tabindex="0" href="#" title="点击查看详情" target="_blank"></a> </span> </div>
-                        <span> <a href="/newsview" class="title">【初学者必读】能让你月薪过万的5大web前端核心技能</a> </span>
+                        <span> <a href="/newsview" class="title"><h5 th:text="${news?.title}"></h5></a> </span>
                         <ul class="list-inline">
                             <li><i class="fa fa-file-text-o"></i></li>
                             <li>24分钟前</li>

@@ -40,7 +40,22 @@ public class ThemeDao extends BaseDao<Theme>{
 		}
 	}
 	
-	public MyPage<Theme> findAll(String keyword,int page,int pagesize){
+	public List<Theme> findAll(String keyword){
+		try {
+			DetachedCriteria dc = DetachedCriteria.forClass(Theme.class);
+			if(StringUtils.isNotBlank(keyword)){
+				Disjunction diskey = Restrictions.disjunction();
+				diskey.add(Property.forName("themename").like(keyword,MatchMode.ANYWHERE));
+				dc.add(diskey);
+			}
+			Criteria criteria = dc.getExecutableCriteria(getSession());
+			return criteria.list();
+		} catch (RuntimeException re) {
+			throw re;
+		}
+	}
+	
+/*	public MyPage<Theme> findAll(String keyword,int page,int pagesize){
 		try{
 			DetachedCriteria dc = DetachedCriteria.forClass(Theme.class);
 			if(StringUtils.isNotBlank(keyword)){
@@ -52,5 +67,5 @@ public class ThemeDao extends BaseDao<Theme>{
 		} catch (RuntimeException re) {
 			throw re;
 		}
-	}
+	}*/
 }

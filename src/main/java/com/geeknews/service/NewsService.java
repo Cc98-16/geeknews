@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.geeknews.dao.NewsDao;
 import com.geeknews.domain.Geeknews;
+import com.geeknews.utils.MyPage;
 import com.geeknews.utils.ServiceException;
 import com.geeknews.valid.NewsForm;
 
@@ -36,6 +37,14 @@ public class NewsService {
 			}
 			
 		} catch (ServiceException e) {
+			throw e;
+		}
+	}
+	
+	public MyPage<Geeknews> findAll(String keyword,int page,int pagesize){
+		try{
+			return newsDao.findAll(keyword, page, pagesize);		
+		}catch(ServiceException e){
 			throw e;
 		}
 	}

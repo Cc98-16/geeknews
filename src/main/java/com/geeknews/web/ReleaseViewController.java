@@ -7,6 +7,6 @@ public class ReleaseViewController {
 	
 	@GetMapping("/newsview")
 	public String Index(){
-		return "release-n";
+		return "newsview";
 	}
 }

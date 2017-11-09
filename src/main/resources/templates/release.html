@@ -20,7 +20,7 @@
             <div data-error="title" style="color:#FF0000"></div>
             
             <select class="form-control ralease-theme" name="classificationid" >
-                <option  th:each="theme,status:${ps?.items}" th:text="${theme?.themename}" th:value="${theme?.id}" ></option>
+                <option  th:each="theme,status:${theme}" th:text="${theme?.themename}" th:value="${theme?.id}" ></option>
             </select>
        
         <div id="layout" style="margin-top:30px;">
@@ -30,7 +30,7 @@
             <div data-error="content" style="color:#FF0000"></div>
         </div>
         
-        <div class="release"><input type="button" name="submit" class="btn btn-primary" style="float:right;" value="创建主题"><a href="/" class="btn btn-default" style="float:right;margin-right:5px;">取消</a></div>
+        <div class="release"><input type="button" name="submit" class="btn btn-primary" style="float:right;" value="发布文章"><a href="/" class="btn btn-default" style="float:right;margin-right:5px;">取消</a></div>
          </form>
     </div>
 </div>

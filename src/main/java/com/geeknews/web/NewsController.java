@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.geeknews.service.NewsService;
 import com.geeknews.service.ThemeService;
+import com.geeknews.utils.Result;
 import com.geeknews.valid.NewsForm;
 
 @Controller
@@ -26,13 +27,13 @@ public class NewsController extends BaseController{
 	
 	@GetMapping("/newsinput")
 	public String InputIndex(Model model){
-		model.addAttribute("ps",themeService.findAll(keyword, page, pagesize));
+		model.addAttribute("theme",themeService.findAll(keyword));
 		return "release";
 	}
 	@ResponseBody
 	@PostMapping(value = "/newsinput")
 	public  Map<String,Object> NewsInput(@Valid NewsForm newsForm,String classificationid,String link){
 		newsService.Newsinput(newsForm,classificationid,link,seuserid);
-		return null;
+		return Result.toUrl("/");
 	}
 }

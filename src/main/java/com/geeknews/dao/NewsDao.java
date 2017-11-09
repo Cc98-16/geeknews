@@ -2,14 +2,18 @@ package com.geeknews.dao;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Disjunction;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Property;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.geeknews.domain.Geeknews;
-import com.geeknews.domain.Theme;
+import com.geeknews.utils.MyPage;
 @Repository
 @Transactional
 public class NewsDao extends BaseDao<Geeknews>{
@@ -31,6 +35,20 @@ public class NewsDao extends BaseDao<Geeknews>{
 			dc.add(Property.forName("title").eq(title));
 			Criteria criteria = dc.getExecutableCriteria(getSession());
 			return criteria.list();
+		} catch (RuntimeException re) {
+			throw re;
+		}
+	}
+	
+	public MyPage<Geeknews> findAll(String keyword,int page,int pagesize){
+		try{
+			DetachedCriteria dc = DetachedCriteria.forClass(Geeknews.class);
+			if(StringUtils.isNotBlank(keyword)){
+				Disjunction diskey = Restrictions.disjunction();
+				diskey.add(Property.forName("title").like(keyword,MatchMode.ANYWHERE));
+				dc.add(diskey);
+			}
+			return this.findPageByCriteria(dc,pagesize,page);
 		} catch (RuntimeException re) {
 			throw re;
 		}

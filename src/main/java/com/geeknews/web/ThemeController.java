@@ -1,5 +1,6 @@
 package com.geeknews.web;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.geeknews.domain.Theme;
 import com.geeknews.service.ThemeService;
-import com.geeknews.utils.MyPage;
 import com.geeknews.utils.Result;
 import com.geeknews.valid.ThemeForm;
 
@@ -38,7 +38,7 @@ public class ThemeController extends BaseController{
 	
 	@GetMapping(value = "/theme")
 	public String ThemeIndex(Model model){
-		MyPage<Theme> theme = themeService.findAll(keyword, page, pagesize);
+		List<Theme> theme = themeService.findAll(keyword);
 		model.addAttribute("ps",theme);
 		return "theme";
 	}
