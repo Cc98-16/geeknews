@@ -48,4 +48,12 @@ public class NewsService {
 			throw e;
 		}
 	}
+	
+	public Geeknews findById(String newsid){
+		try {
+			return newsDao.findById(newsid);
+		}catch(ServiceException e){
+			throw e;
+		}
+	}
 }

@@ -18,6 +18,15 @@ import com.geeknews.utils.MyPage;
 @Transactional
 public class NewsDao extends BaseDao<Geeknews>{
 	
+	public Geeknews findById(String id){
+		try {
+			Geeknews geeknews = getSession().get(Geeknews.class, id);
+			return geeknews;
+		} catch (RuntimeException re) {
+			throw re;
+		}
+	}
+	
 	public void save(Geeknews news) {
 		log.debug("saving Event instance");
 		try {

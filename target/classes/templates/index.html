@@ -167,7 +167,7 @@
                     <dd data-dsm="post" data-poputype="feed" data-feed-show="true" class="tracking-ad" data-mod="popu_81" >
                         <div class="list_ad"> <span> <a data-pjax="" class="link_pjax" tabindex="0" href="#" title="点击查看详情" target="_blank"></a> </span> </div>
                         <div class="list_ad_mobile"> <span> <a class="link_pjax" tabindex="0" href="#" title="点击查看详情" target="_blank"></a> </span> </div>
-                        <span> <a href="/newsview" class="title"><h5 th:text="${news?.title}"></h5></a> </span>
+                        <span> <a th:href="|/newsview/${news?.id}|" class="title"><h5 th:text="${news?.title}"></h5></a></span>
                         <ul class="list-inline">
                             <li><i class="fa fa-file-text-o"></i></li>
                             <li>24分钟前</li>
