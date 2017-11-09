@@ -94,7 +94,7 @@ header > h1 {
 	display: inline-block;
 }
 .release-title{
-	width: 74%!important;
+	width: 72%!important;
 	height:  35px!important;
 }
 .release-label{
@@ -102,6 +102,8 @@ header > h1 {
 	height:  35px!important;
 }
 .ralease-theme{
+	right: 10px;
+	float: right!important;
 	width: 25%!important;
 	height:  35px!important;
 }

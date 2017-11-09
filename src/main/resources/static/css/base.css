@@ -1,6 +1,6 @@
 /*---------------------------------------body*/
 @charset "utf-8";
-body{font-weight: 400;color: #5e5e5e; font-family: "微软雅黑",宋体,roboto,Arial; font-size: 13px; line-height: 1.42857; background-color: rgb(249, 249, 249) !important;}
+body{font-weight: 400;color: #5e5e5e; font-family: "微软雅黑",宋体,roboto,Arial; font-size: 13px; line-height: 1.42857; }
 a {color: #2196f3;text-decoration: none;}
 a:hover{color: #2196f3;text-decoration: none;}
 *, *:active, *:hover { outline: medium none !important;}
@@ -2247,6 +2247,36 @@ svg{
 	z-index: 1;
 }
 .IconMemu button i{color: #fff;}
+
+.theme_top-img{
+	position: absolute;
+    overflow: hidden;
+    text-align: center;
+	left: 50px;
+    width: 80px;
+    height: 80px;
+}
+.theme_top-img img{
+	max-width: 80px;
+    max-height: 80px;
+}
+.theme_top{
+	position: relative;
+    padding: 30px 0 0px 160px;
+}
+.theme_top-content p{
+	margin-bottom: 0;
+}
+.theme_con-title{
+	font-size: 22px;
+}
+.theme_con-jd{
+	margin: 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #545e66;
+}
 
 
 
