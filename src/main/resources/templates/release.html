@@ -15,13 +15,14 @@
         <header>
             <h1>文章发布</h1>
         </header>
-        <form class="form-group release-form" th:action="@{/newsinput}">
-            <input type="text" name="title" class="form-control release-title" placeholder="输入标题">
-            <div data-error="title" style="color:#FF0000"></div>
+        <form class="form-group release-form row" th:action="@{/newsinput}">
+            <input type="text" name="title" class="form-control release-title col-md-6" placeholder="输入标题">
             
-            <select class="form-control ralease-theme" name="classificationid" >
+            <select class="form-control ralease-theme col-md-6" name="classificationid">
+                <option th:text="请选择主题"></option>
                 <option  th:each="theme,status:${ps?.items}" th:text="${theme?.themename}" th:value="${theme?.id}" ></option>
             </select>
+            <div data-error="title" style="color:#FF0000; margin-top:60px; text-align: left;"></div>
        
         <div id="layout" style="margin-top:30px;">
             <div id="test-editormd">

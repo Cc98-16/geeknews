@@ -1,17 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+<title>index</title>
+<link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
+<link rel="stylesheet" href="../static/fonts/font-awesome.min.css" th:href="@{/fonts/font-awesome.min.css}">
+<link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
 <link rel="stylesheet" href="../static/css/base.css" th:href="@{/css/base.css}">
-<link rel="stylesheet" href="../static/css/material-icons.css" th:href="@{/css/material-icons.css}">
-<link rel="stylesheet" href="../static/css/material.min.css" th:href="@{/css/material.min.css}">
 </head>
+
+<!-- <iframe id="intc-them" class="intc-them" src="/themesave" scrolling="no" frameborder="0"> </iframe> -->
 <body>
-全部主题：
-<div th:each="theme,status:${ps?.items}">
-<h5 th:text="${theme?.themename}"></h5>
+<!-- <div class="in-mb"></div> -->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">添加新的主题：</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div>
+      <form th:action="@{/themesave}">
+      <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">输入主题名称</label>
+            <input type="text" class="form-control" id="recipient-name" name="themename">
+            <div data-error="themename" style="color:#FF0000"></div>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">输入主题描述</label>
+            <textarea class="form-control" id="message-text" name=tdescription></textarea>
+            <div data-error="tdescription" style="color:#FF0000"></div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+        <input type="button" name="submit" class="btn btn-primary" value="创建主题">
+      </div>
+      </form>
+      </div>
+    </div>
+  </div>
 </div>
-<div th:replace="base :: pagination"></div>
+
+
+<nav class="nav navbar-default navbar-fixed-top" id="nav1">
+    <div class="container-yzw">
+        <div class="navbar-brand"><h3>Geek News</h3></div>
+        <div class="collapse navbar-collapse" style="float: right;" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav">
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="geek">
+    <div class="left-container person-left">
+        <div class="left-layout-container">
+            <div class="user-info"><a href="#"> <img src="/images/user.jpg" alt="" class="user-img"></a> <a href="#"  class="login-name">Eric</a>
+                <div>这是一句个人简介，一点都不长对吧。</div>
+            </div>
+            <ul class="left-menu">
+                <li class="theme-menua"><span class="toggle-subnav"><a href="Javascript: void(0)" class="changeleft">全部主题</a></span></li>
+                <li class="theme-menu"> <span class="toggle-subnav">热门主题</span> <a href="#" class="flip"><i class="fa fa-angle-down"></i></a>
+                    <dl class="hot_forum start">
+                        <a href="#" title="物联网（IoT）"> <img src="/images/loT.jpg" alt=""> </a>
+                        <a href="#" title="Android开发者"> <img src="/images/android.png" alt=""> </a>
+                        <a href="#" title="Java开发者"> <img src="/images/java.jpg" alt=""> </a>
+                        <a href="#" title="安全"> <img src="/images/security.jpg" alt=""> </a>
+                        <a href="#" title="潜水猿"> <img src="/images/cry.jpeg" alt=""> </a>
+                    </dl>
+                </li>
+                
+                <!-- <li class="">
+                    <div class="to_pub text-center"><a href="/themesave" class="start_cmmde"> <i class="fa fa-plus"></i><span>申请创建主题</span> </a></div>
+                </li> -->
+                
+            </ul>
+        </div>
+    </div>
+    <!--左边结束--> 
+    
+    <!-- 全部主题界面 -->
+    <div class="all-theme" style="display: none;">
+	    <div class="left-container">
+	        <div class="left-layout-container">
+	            <div href="Javascript: void(0)" class="returnleft"><i class="fa fa-chevron-left"></i>返回上一层</div>
+	            <ul class="left-menu">
+	                <li class="">
+	                    <div class="to_pub text-center" data-toggle="modal" data-target="#exampleModal"><a href="Javascript: void(0)" class="start_cmmde"> <i class="fa fa-plus"></i><span>申请创建主题</span> </a></div>
+	                </li>
+	                <li class="theme-menu" th:each="theme,status:${ps?.items}">
+	                	<div class="left-alltheme" >
+	                		<img src="/images/loT.jpg" alt="">
+	                		<div class="theme-per"> 
+								<h5 th:text="${theme?.themename}"></h5>
+								<i class="fa fa-file-text"></i>5646<i class="fa fa-users"></i>97815
+							</div>
+	                	</div>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+    </div>
+    <!-- 全部主题界面结束 -->
+    
+    <!--右边开始-->
+    <div class="blog-container main-container center_body">
+        <nav class="nav navbar-default nav-hide">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <a class="navbar-brand" href="#">Geek News</a> </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">个人主页</a></li>
+                        <li><a href="#">发布文章</a></li>
+                        <li><a href="#">发布图文</a></li>
+                        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">热门主题<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">物联网</a></li>
+                                <li><a href="#">Android开发者</a></li>
+                                <li><a href="#">Java开发者</a></li>
+                                <li><a href="#">安全</a></li>
+                                <li><a href="#">潜水猿</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">搜索</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <dl class="theme_top">
+        	<dt class="theme_top-img">
+        		<img alt="" src="/images/loT.jpg">
+        	</dt>
+        	<dd class="theme_top-content">
+        		<p class="theme_con-title">物联网（IoT）</p>
+        		<p class="theme_con-jd">网尽物联网最权威、最专业技术资讯，欢迎分享交流！</p>
+        	</dd>
+        </dl>
+        <div class="blog-list-container">
+            <div id="geek_list">
+                <dl class="geek_list" id="">
+                    <dt class="left">
+                        <div class="news_vote" voteid="240709"> <i class="fa fa-sort-up" datatype="up"></i>
+                            <div class="count"> 0 </div>
+                            <i class="fa fa-sort-down" datatype="down"></i> </div>
+                    </dt>
+                    <dd data-dsm="post" data-poputype="feed" data-feed-show="true" class="tracking-ad" data-mod="popu_81">
+                        <div class="list_ad"> <span> <a data-pjax="" class="link_pjax" tabindex="0" href="#" title="点击查看详情" target="_blank"></a> </span> </div>
+                        <div class="list_ad_mobile"> <span> <a class="link_pjax" tabindex="0" href="#" title="点击查看详情" target="_blank"></a> </span> </div>
+                        <span> <a href="/newsview" class="title">【初学者必读】能让你月薪过万的5大web前端核心技能</a> </span>
+                        <ul class="list-inline">
+                            <li><i class="fa fa-file-text-o"></i></li>
+                            <li>24分钟前</li>
+                            <li><a href="#" data-target="" target="_blank">前端</a></li>
+                            <li class="read_num"><span>阅读数</span><em>81</em></li>
+                        </ul>
+                    </dd>
+                    <dt class="right"> <a href="#" target="_blank"> <img src="/images/user.jpg" class="avatar"> </a> </dt>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
+<script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script> 
+<script th:src="@{/js/base.js}"></script>
+<script>
+	function F_Open_dialog() 
+{ 
+document.getElementById("btn_file").click(); 
+}
+	 
+$(document).ready(function(){
+$(".flip").click(function(){
+$(".start").toggle(500);
+});
+});
+$(".changeleft").click( function () { $(".person-left").hide(250); $(".all-theme").show(250); });
+
+$(".returnleft").click( function () { $(".all-theme").hide(250); $(".person-left").show(250); });
+$(".to_pub").click( function () { $(".intc-them").show(); $(".in-mb").show(); });
+$(".in-mb").click( function () { $(".intc-them").hide(); $(".in-mb").hide(); });
+
+if ('.intc-them') {
+	  $('.in-mb').hide();
+	} else {
+	  $('.in-mb').show();
+	} 
+
+</script>
 </body>
 </html>
