@@ -12,11 +12,21 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.geeknews.domain.Geeknews;
 import com.geeknews.domain.Theme;
 import com.geeknews.utils.MyPage;
 @Repository
 @Transactional
 public class ThemeDao extends BaseDao<Theme>{
+	
+	public Theme findById(String id){
+		try {
+			Theme theme = getSession().get(Theme.class, id);
+			return theme;
+		} catch (RuntimeException re) {
+			throw re;
+		}
+	}
 	
 	public void save(Theme theme) {
 		log.debug("saving Event instance");

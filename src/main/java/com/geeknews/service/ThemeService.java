@@ -44,4 +44,12 @@ public class ThemeService {
 			throw e;
 		}
 	}
+	
+	public Theme findById(String themeid){
+		try {
+			return themeDao.findById(themeid);
+		}catch(ServiceException e){
+			throw e;
+		}
+	}
 }

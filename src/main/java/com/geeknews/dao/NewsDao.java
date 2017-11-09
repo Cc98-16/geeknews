@@ -62,4 +62,14 @@ public class NewsDao extends BaseDao<Geeknews>{
 			throw re;
 		}
 	}
+	
+	public MyPage<Geeknews> findtheme(String themeid,int page,int pagesize){
+		try{
+			DetachedCriteria dc = DetachedCriteria.forClass(Geeknews.class);
+			dc.add(Property.forName("classificationid").eq(themeid));
+			return this.findPageByCriteria(dc,pagesize,page);
+		} catch (RuntimeException re) {
+			throw re;
+		}
+	}
 }

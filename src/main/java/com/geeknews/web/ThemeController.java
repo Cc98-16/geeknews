@@ -1,18 +1,18 @@
 package com.geeknews.web;
 
-import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.geeknews.domain.Theme;
+import com.geeknews.service.NewsService;
 import com.geeknews.service.ThemeService;
 import com.geeknews.utils.Result;
 import com.geeknews.valid.ThemeForm;
@@ -20,8 +20,10 @@ import com.geeknews.valid.ThemeForm;
 @Controller
 public class ThemeController extends BaseController{
 	
-	@Resource
+	@Autowired
 	private ThemeService themeService;
+	@Autowired
+	private NewsService newsService;
 	
 	@GetMapping("/themesave")
 	public String ThemeAdd(){
@@ -36,10 +38,11 @@ public class ThemeController extends BaseController{
 		return Result.toUrl("/");
 	}
 	
-	@GetMapping(value = "/theme")
-	public String ThemeIndex(Model model){
-		List<Theme> theme = themeService.findAll(keyword);
-		model.addAttribute("ps",theme);
-		return "theme";
+	@GetMapping("/tarticle/{themeid}")
+	public String ThemeIndex(@PathVariable String themeid,Model model){
+		model.addAttribute("theme",themeService.findAll(keyword));
+		model.addAttribute("ps",newsService.findtheme(themeid, page, pagesize));
+		model.addAttribute("themeid",themeService.findById(themeid));
+		return "tarticle";
 	}
 }

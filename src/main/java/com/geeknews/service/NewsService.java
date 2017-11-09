@@ -49,6 +49,14 @@ public class NewsService {
 		}
 	}
 	
+	public MyPage<Geeknews> findtheme(String themeid,int page,int pagesize){
+		try{
+			return newsDao.findtheme(themeid, page, pagesize);		
+		}catch(ServiceException e){
+			throw e;
+		}
+	}
+	
 	public Geeknews findById(String newsid){
 		try {
 			return newsDao.findById(newsid);

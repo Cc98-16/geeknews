@@ -30,6 +30,7 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter{
     	addInterceptor.excludePathPatterns("/register");
     	addInterceptor.excludePathPatterns("/newsview");
     	addInterceptor.excludePathPatterns("/themesave");
+    	addInterceptor.excludePathPatterns("/tarticle/{themeid}");
     	addInterceptor.excludePathPatterns("/");
     	
 		// 拦截配置
