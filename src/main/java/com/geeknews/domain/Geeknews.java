@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -30,6 +32,10 @@ public class Geeknews {
 	
 	@CreationTimestamp
 	private Timestamp ctime;	//发布时间
+	
+/*    @OneToMany
+    @JoinColumn(name = "comment_id")
+	private Comment comment;*/
 	
 	public void init(){
 		this.id = ID.uuid();
@@ -91,5 +97,14 @@ public class Geeknews {
 	public void setCtime(Timestamp ctime) {
 		this.ctime = ctime;
 	}
+
+	public Comment getComment() {
+		return comment;
+	}
+
+	public void setComment(Comment comment) {
+		this.comment = comment;
+	}
+
 	
 }
