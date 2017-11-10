@@ -14,11 +14,6 @@
 <div class="article-top">
     <div class="container">
         <dl class="geek_list title">
-            <dt class="left">
-                <div class="news_vote" voteid="240709"> <i class="fa fa-sort-up" datatype="up"></i>
-                    <div class="count"> 0 </div>
-                    <i class="fa fa-sort-down" datatype="down"></i> </div>
-            </dt>
             <dd>
                 <h3  class="title" th:text="${geeknews?.title}"></h3>
                 <ul class="list-inline">
@@ -41,20 +36,83 @@
             <div class="information"><span>发布于</span><a href="#">前端</a><span>2017-10-24 16:20</span></div>
         </div>
     </div>
-    <div class="comment">
-    	<div class="comment-top">
-    		<h3>评论</h3>
-    	</div>
-    	<dl class="comment-bottom">
-    		<dt class=""></dt>
-    		<dt></dt>
-    		<dt></dt>
-    	</dl>
+    <div class="wcl-list" name="comment_load_box">
+        <ul name="JCommentUl" class="comment-ul" th:remove="all-but-first">
+            <li>
+                <a target="_blank" href="#" title="枯骨树先生"><img width="60px" height="60px" class="userimage" src="../static/img/header.jpg" alt="网信" th:src="${(citem?.user?.logo != null && !#strings.isEmpty(citem?.user?.logo)) ? citem?.user?.logo : '/images/user.jpg'}" th:alt="${citem?.user?.name}"></a>
+                <div class="userdiv">
+                    <div class="user-info">
+                        <div class="name"><a target="_blank" href="#" title="枯骨树先生" >枯骨树先生</a></div>
+                		<div class="text">这是枯骨树先生的评论内容</div>
+                        <div class="time">2017-2-27</div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="commentBox">
+        <div class="box Jinput">发表评论…</div>
+        <div class="Jcommentform comment-form" style="display: none;">
+            <form name="fm_info_cm" action="info_cm_save.htm">
+                <a href="#"><img class="userimage" alt="枯骨树先生" src="/images/user.jpg" height="28px" width="28px"></a>
+                <textarea class="textarea" name="content" style="margin-top: 0px; margin-bottom: 0px; height: 36px;width:100%;"></textarea>
+                <div class="clearfix">
+                    <input value="" name="mkey" type="hidden">
+                    <input value="info" name="t" type="hidden">
+                    <input value="" name="confirm" type="hidden">
+                    <button name="btn_comment_pub" class="mdl-button mdl-js-button mdl-button--raised sendBtn" type="button" data-upgraded=",MaterialButton">发布评论</button>
+                    <button class="Jformhide mdl-button mdl-js-button mdl-button--raised cancelBtn" type="button" data-upgraded=",MaterialButton">取消</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 </div>
 <div style="height: 60px;"></div>
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script>
+$(function() {
+
+    // 显示/隐藏
+    var e = e || event;
+    $(document).on('click', ".drop-up", function() { $(".drop-down").hide(); })
+    $(document).on('click', ".drop-open", function() { $(".drop-down").slideDown(); })
+
+    $(document).on('click', ".pv-cancel", function() { $(".form-group").hide(300); })
+    $(document).on('click', ".pv-follow-btn", function() { $(".form-group").slideDown(); })
+
+    // 评论切换
+    $(document).on("click", ".Jinput", function() {
+        $(this).hide().next(".Jcommentform").fadeIn("fast");
+        $(".textarea[name='content']").focus();
+        $(this).closest(".commentBox").find("[name='confirm']").val(""); //加载后将变量重置
+        $(this).closest(".commentBox").find("[name='content']").val(""); //加载后将变量重置
+    });
+
+    // 加载评论 ok
+    $(document).on("click", "[name=LoadComments]", function() {
+        var init_JCommentUl = $(this).closest(".comment").find($("*[name='JCommentUl']")).prop("outerHTML");
+        var JCommentUl = $(this).closest(".comment").find("[name='comment_load_box']");
+        if ($(this).hasClass("active")) { //已添加过
+            //JCommentUl.load("/info/"+$(this).closest(".comment").find(".info_id").text()+"/comments" + "/1");
+            JCommentUl.empty();
+            //JCommentUl.append(init_JCommentUl);
+        } else {
+            JCommentUl.load("/info/" + $(this).closest(".comment").find(".info_id").last().text() + "/comments" + "/1");
+        }
+        $(this).toggleClass("active");
+        $(this).children("i").toggleClass("top");
+        $("[name=arrow-icon]").toggleClass("active");
+    });
+
+    // 隐藏评论表单
+    $(document).on("click", ".Jformhide", function() {
+        $(this).parents(".Jcommentform").hide().prev(".Jinput").show();
+    });
+
+});
+
+</script>
 </body>
 </html>

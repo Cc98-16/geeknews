@@ -107,6 +107,66 @@ ul > li > span > .fa {
 .comment{
 	margin-top: 30px;
 }
+
+.commentBox .box, .commentBoxFull .box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    color: #999;
+    cursor: text;
+    font-size: 12px;
+    height: auto;
+    margin: 0;
+    padding: 6px 8px;
+}
+.comment-form {
+    display: none;
+    padding-left: 38px;
+}
+.sendBtn, .cancelBtn {
+    height: 30px;
+    margin-top: 10px;
+    line-height: 30px;
+    font-size: 12px;
+}
+.sendBtn {
+    background: #2196f3;
+    color: #fff;
+    margin-right: 10px;
+}
+.infocard-mdl-card .sendBtn, .cancelBtn {
+    height: 30px;
+    margin-top: 10px;
+    line-height: 30px;
+    font-size: 12px;
+}
+.comment-form {
+    display: none;
+    padding-left: 40px;
+}
+.mdl-button--raised {
+    padding: 0 16px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    border: 0;
+}
+.commentBox{
+	margin-top: 20px;
+}
+.userimage {
+    float: left;
+    margin-left: -38px;
+}
+.comment-ul li{
+	list-style: none;
+}
+.comment-ul{
+	margin-top: 20px;
+}
+.userdiv{
+	margin-left: 40px;
+}
+
+
  @media (max-width:734px) {
  .article-top {
  height: 220px;
