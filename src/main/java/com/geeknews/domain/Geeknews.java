@@ -1,10 +1,12 @@
 package com.geeknews.domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,9 +35,8 @@ public class Geeknews {
 	@CreationTimestamp
 	private Timestamp ctime;	//发布时间
 	
-/*    @OneToMany
-    @JoinColumn(name = "comment_id")
-	private Comment comment;*/
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Comment> comment = new ArrayList<>();
 	
 	public void init(){
 		this.id = ID.uuid();
@@ -98,13 +99,12 @@ public class Geeknews {
 		this.ctime = ctime;
 	}
 
-	public Comment getComment() {
+	public List<Comment> getComment() {
 		return comment;
 	}
 
-	public void setComment(Comment comment) {
+	public void setComment(List<Comment> comment) {
 		this.comment = comment;
 	}
-
 	
 }
