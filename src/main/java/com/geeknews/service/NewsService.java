@@ -35,7 +35,6 @@ public class NewsService {
 				news.setClassificationid(classificationid);
 				newsDao.save(news);
 			}
-			
 		} catch (ServiceException e) {
 			throw e;
 		}

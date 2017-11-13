@@ -15,5 +15,4 @@ public class CommentForm {
 		this.comment = comment;
 	}
 	
-	
 }
