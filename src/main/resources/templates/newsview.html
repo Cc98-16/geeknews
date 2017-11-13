@@ -53,14 +53,12 @@
     <div class="commentBox">
         <div class="box Jinput">发表评论…</div>
         <div class="Jcommentform comment-form" style="display: none;">
-            <form name="fm_info_cm" action="info_cm_save.htm">
+            <form name="fm_info_cm" th:action="@{/commentinput}">
                 <a href="#"><img class="userimage" alt="枯骨树先生" src="/images/user.jpg" height="28px" width="28px"></a>
-                <textarea class="textarea" name="content" style="margin-top: 0px; margin-bottom: 0px; height: 36px;width:100%;"></textarea>
+                <textarea class="textarea" name="comment" style="margin-top: 0px; margin-bottom: 0px; height: 36px;width:100%;"></textarea>
+                <input th:value="${geeknews?.id}" name="newsid" type="hidden">
                 <div class="clearfix">
-                    <input value="" name="mkey" type="hidden">
-                    <input value="info" name="t" type="hidden">
-                    <input value="" name="confirm" type="hidden">
-                    <button name="btn_comment_pub" class="mdl-button mdl-js-button mdl-button--raised sendBtn" type="button" data-upgraded=",MaterialButton">发布评论</button>
+                    <input type="button" name="submit" class="mdl-button mdl-js-button mdl-button--raised sendBtn"  data-upgraded=",MaterialButton" value="发布评论">
                     <button class="Jformhide mdl-button mdl-js-button mdl-button--raised cancelBtn" type="button" data-upgraded=",MaterialButton">取消</button>
                 </div>
             </form>
@@ -71,6 +69,7 @@
 <div style="height: 60px;"></div>
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/base.js}"></script>
 <script>
 $(function() {
 

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: geeknews
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Csy
+Built-By: Ccsy
 Implementation-Vendor-Id: com.geeknews
 Build-Jdk: 1.8.0_112
 Implementation-URL: http://projects.spring.io/spring-boot/geeknews/
