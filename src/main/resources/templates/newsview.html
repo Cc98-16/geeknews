@@ -18,16 +18,14 @@
                 <h3  class="title" th:text="${geeknews?.title}"></h3>
                 <ul class="list-inline">
                     <li>24分钟前</li>
-                    <li><span><i class="fa fa-eye"></i>81</span></li>
-                    <li></li>
                 </ul>
-                <div class="list-inline"><a th:href="|/tarticle/${geeknews?.theme?.id}|" class=""><h5 th:text="${geeknews?.theme?.themename}"></h5></a></div>
+                <div class="list-inline"><a th:href="|/tarticle/${geeknews?.theme?.id}|" class=""><span th:text="${geeknews?.theme?.themename}"></span></a></div>
             </dd>
         </dl> 
 		<ol class="breadcrumb">
-		  <li><a href="#">Home</a></li>
-		  <li><a href="#">Library</a></li>
-		  <li class="active">Data</li>
+		  <li><a href="#">首页</a></li>
+		  <li><a href="/">主题</a></li>
+		  <li class="active">头条详情</li>
 		</ol>
     </div>
 </div>
@@ -40,7 +38,7 @@
     <div class="footer-bar">
         <div class="user-photo"> <img src="/images/user.jpg" class="avatar" alt=""> </div>
         <div class="user-right"> <a href="#" class="user-name">枯骨树先生</a>
-            <div class="information"><span>发布于</span><a th:href="|/tarticle/${geeknews?.theme?.id}|"><h5 th:text="${geeknews?.theme?.themename}"></h5></a><span th:text="${#dates.format(geeknews?.ctime, 'yyyy-MM-dd HH:mm')}"></span></div>
+            <div class="information"><span>发布于</span><a th:href="|/tarticle/${geeknews?.theme?.id}|"><span th:text="${geeknews?.theme?.themename}"></span></a><span th:text="${#dates.format(geeknews?.ctime, 'yyyy-MM-dd HH:mm')}"></span></div>
         </div>
     </div>
     
