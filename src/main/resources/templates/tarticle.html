@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="../static/fonts/font-awesome.min.css" th:href="@{/fonts/font-awesome.min.css}">
 <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
 <link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
+<link rel="stylesheet" href="../static/css/material-icons.css" th:href="@{/css/material-icons.css}">
 </head>
 
 <!-- <iframe id="intc-them" class="intc-them" src="/themesave" scrolling="no" frameborder="0"> </iframe> -->
@@ -172,13 +173,13 @@
                         <ul class="list-inline">
                             <li><i class="fa fa-file-text-o"></i></li>
                             <li>24分钟前</li>
-                            <li><a th:href="|/tarticle/${news?.theme?.id}|" data-target="" target="_blank"><h5 th:text="${news?.theme?.themename}"></h5></a></li>
-                            <li class="read_num"><span>阅读数</span><em>81</em></li>
+                            <li><a th:href="|/tarticle/${news?.theme?.id}|" data-target="" target="_blank"><span th:text="${news?.theme?.themename}"></span></a></li>
                         </ul>
                     </dd>
                     <dt class="right"> <a href="#" target="_blank"> <img src="/images/user.jpg" class="avatar"> </a> </dt>
                 </dl>
             </div>
+            <div th:replace="base :: pagination"></div>
         </div>
     </div>
 </div>

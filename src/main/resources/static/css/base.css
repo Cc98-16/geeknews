@@ -1197,8 +1197,13 @@ svg{
     vertical-align: middle;
 }
 .materialdfenye ul li.active a {
-    background-color: #337ab7;
-    border-color: #337ab7;
+    background-color: #0088ec;
+    border-color: #0088ec;
+    color: #fff;
+}
+.materialdfenye ul li.active a:hover {
+    background-color: #0088ec;
+    border-color: #0088ec;
     color: #fff;
 }
 

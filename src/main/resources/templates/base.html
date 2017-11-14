@@ -6,7 +6,7 @@
 </head>
 <body>
     <!-- pagination-->
-    <div class="mdl-cell mdl-cell--12-col text-left materialdfenye" th:fragment="pagination" th:if="${ps.totalcount != 0}">
+    <div class="mdl-cell mdl-cell--12-col materialdfenye" th:fragment="pagination" th:if="${ps.totalcount != 0}">
         <ul class="pagination">
             <li>
                 <a th:href="|?page=${ps.pre}|" aria-label="上一页">
@@ -27,6 +27,7 @@
                 </a>
             </li>
         </ul>
+        <p class="inyddesgin">Desgin By Geeknews</p>
     </div>
     <!-- pagination end-->
 </body>
