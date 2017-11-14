@@ -64,3 +64,21 @@ $(function() {
     });
 });
 
+
+	 
+$(document).ready(function(){
+$(".flip").click(function(){
+$(".start").toggle(500);
+});
+});
+$(".changeleft").click( function () { $(".person-left").hide(250); $(".all-theme").show(250); });
+
+$(".returnleft").click( function () { $(".all-theme").hide(250); $(".person-left").show(250); });
+$(".to_pub").click( function () { $(".intc-them").show(); $(".in-mb").show(); });
+$(".in-mb").click( function () { $(".intc-them").hide(); $(".in-mb").hide(); });
+
+if ('.intc-them') {
+	  $('.in-mb').hide();
+	} else {
+	  $('.in-mb').show();
+	} 

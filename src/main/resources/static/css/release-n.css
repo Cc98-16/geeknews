@@ -3,7 +3,7 @@
 .article-top {
 	background: #0f88eb;
 	padding: 30px 25px 25px 25px;
-	height: 200px;
+	height: 220px;
 }
 .title {
 	color: #fff;
@@ -111,6 +111,7 @@ ul > li > span > .fa {
 .commentBox .box, .commentBoxFull .box {
     background-color: #fff;
     border: 1px solid #ddd;
+    border-radius: 5px;
     box-sizing: border-box;
     color: #999;
     cursor: text;
@@ -165,7 +166,17 @@ ul > li > span > .fa {
 .userdiv{
 	margin-left: 40px;
 }
-
+.breadcrumb{
+    background: transparent !important;
+    float: right;
+}
+.breadcrumb li a{
+	font-size: 16px;
+	color: #fff;
+}
+.breadcrumb > .active{
+	color: #eee;
+}
 
  @media (max-width:734px) {
  .article-top {

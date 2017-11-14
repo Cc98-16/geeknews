@@ -2317,6 +2317,11 @@ svg{
   transform: translateX(0) !important;
   width: 185px !important;
 }
+.navbar-brand a h3{
+	color: #777;
+	margin-top: 0;
+	font-size: 24px;
+}
 @media(max-width: 750px){
   .layout-drawer{       /* 左侧滑消失变成material侧滑 */
     display: none !important;
@@ -2333,3 +2338,4 @@ svg{
 @media(max-width: 599px){
   .loca, .navig-menu{display: none;}
 }
+

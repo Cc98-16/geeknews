@@ -25,7 +25,7 @@ public class Comment {
 	private String userid;			//发布的用户
 	
     @ManyToOne
-    @JoinColumn(name = "geeknews_id")
+    @JoinColumn(name="geeknews_id")
 	private Geeknews geeknews;
     
 	@CreationTimestamp
@@ -76,7 +76,4 @@ public class Comment {
 		this.ctime = ctime;
 	}
 	
-	
-    
-    
 }

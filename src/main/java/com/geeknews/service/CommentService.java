@@ -9,6 +9,7 @@ import com.geeknews.dao.CommentDao;
 import com.geeknews.dao.NewsDao;
 import com.geeknews.domain.Comment;
 import com.geeknews.domain.Geeknews;
+import com.geeknews.utils.MyPage;
 import com.geeknews.utils.ServiceException;
 import com.geeknews.valid.CommentForm;
 
@@ -32,6 +33,14 @@ public class CommentService {
 			commentDao.save(comment);
 			
 		} catch (ServiceException e) {
+			throw e;
+		}
+	}
+	
+	public MyPage<Comment> findAll(Geeknews geeknews,String keyword,int page,int pagesize){
+		try{
+			return commentDao.findAll(geeknews,keyword, page, pagesize);		
+		}catch(ServiceException e){
 			throw e;
 		}
 	}

@@ -160,9 +160,11 @@
             <div id="geek_list">
                 <dl class="geek_list" id="" th:each="news,iterStat : ${ps?.items}">
                     <dt class="left">
-                        <div class="news_vote" voteid="240709"> <i class="fa fa-sort-up" datatype="up"></i>
-                            <div class="count"> 0 </div>
-                            <i class="fa fa-sort-down" datatype="down"></i> </div>
+                        <div class="news_vote" voteid="240709">
+							<i class="fa fa-sort-up" datatype="up" onclick="document.getElementById('count').innerHTML++"></i>
+                            <div class="count" id="count"> 0 </div>
+                            <i class="fa fa-sort-down" datatype="down" onclick="document.getElementById('count').innerHTML--"></i>
+						</div>
                     </dt>
                     <dd data-dsm="post" data-poputype="feed" data-feed-show="true" class="tracking-ad" data-mod="popu_81" >
                         <div class="list_ad"> <span> <a data-pjax="" class="link_pjax" tabindex="0" href="#" title="点击查看详情" target="_blank"></a> </span> </div>
@@ -184,29 +186,5 @@
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script> 
 <script th:src="@{/js/base.js}"></script>
-<script>
-	function F_Open_dialog() 
-{ 
-document.getElementById("btn_file").click(); 
-}
-	 
-$(document).ready(function(){
-$(".flip").click(function(){
-$(".start").toggle(500);
-});
-});
-$(".changeleft").click( function () { $(".person-left").hide(250); $(".all-theme").show(250); });
-
-$(".returnleft").click( function () { $(".all-theme").hide(250); $(".person-left").show(250); });
-$(".to_pub").click( function () { $(".intc-them").show(); $(".in-mb").show(); });
-$(".in-mb").click( function () { $(".intc-them").hide(); $(".in-mb").hide(); });
-
-if ('.intc-them') {
-	  $('.in-mb').hide();
-	} else {
-	  $('.in-mb').show();
-	} 
-
-</script>
 </body>
 </html>
