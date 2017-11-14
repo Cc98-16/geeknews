@@ -5,7 +5,6 @@
 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
 <title>文章详情</title>
 <link rel="stylesheet" href="../static/css/release-n.css" th:href="@{/css/release-n.css}">
-<link rel="stylesheet" href="../static/fonts/font-awesome.min.css" th:href="@{/css/fonts/font-awesome.min.css}">
 <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
 </head>
 
@@ -36,14 +35,14 @@
             <div class="information"><span>发布于</span><a href="#">前端</a><span>2017-10-24 16:20</span></div>
         </div>
     </div>
-    <div class="wcl-list" name="comment_load_box">
+    <div class="wcl-list" name="comment_load_box"  th:each="comment,iterStat : ${ps?.items}">
         <ul name="JCommentUl" class="comment-ul" th:remove="all-but-first">
             <li>
-                <a target="_blank" href="#" title="枯骨树先生"><img width="60px" height="60px" class="userimage" src="../static/img/header.jpg" alt="网信" th:src="${(citem?.user?.logo != null && !#strings.isEmpty(citem?.user?.logo)) ? citem?.user?.logo : '/images/user.jpg'}" th:alt="${citem?.user?.name}"></a>
+                <a class="newsviewimg" target="_blank" href="#" title="枯骨树先生"><img width="60px" height="60px" class="userimage" src="../static/img/header.jpg" alt="网信" th:src="${(citem?.user?.logo != null && !#strings.isEmpty(citem?.user?.logo)) ? citem?.user?.logo : '/images/user.jpg'}" th:alt="${citem?.user?.name}"></a>
                 <div class="userdiv">
                     <div class="user-info">
                         <div class="name"><a target="_blank" href="#" title="枯骨树先生" >枯骨树先生</a></div>
-                		<div class="text">这是枯骨树先生的评论内容</div>
+                		<div class="text"><h5 th:text="${comment?.comment}"></h5></div>
                         <div class="time">2017-2-27</div>
                     </div>
                 </div>
@@ -56,6 +55,7 @@
             <form name="fm_info_cm" th:action="@{/commentinput}">
                 <a href="#"><img class="userimage" alt="枯骨树先生" src="/images/user.jpg" height="28px" width="28px"></a>
                 <textarea class="textarea" name="comment" style="margin-top: 0px; margin-bottom: 0px; height: 36px;width:100%;"></textarea>
+                <div data-error="comment" style="color:#FF0000"></div>
                 <input th:value="${geeknews?.id}" name="newsid" type="hidden">
                 <div class="clearfix">
                     <input type="button" name="submit" class="mdl-button mdl-js-button mdl-button--raised sendBtn"  data-upgraded=",MaterialButton" value="发布评论">
