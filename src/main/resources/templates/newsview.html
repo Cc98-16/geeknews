@@ -21,7 +21,7 @@
                     <li><span><i class="fa fa-eye"></i>81</span></li>
                     <li></li>
                 </ul>
-                <div class="list-inline"> <a href="#" class="">技术</a> <a href="#" class="">前端</a> <a href="#" class="">设计</a> </div>
+                <div class="list-inline"><a th:href="|/tarticle/${geeknews?.theme?.id}|" class=""><h5 th:text="${geeknews?.theme?.themename}"></h5></a></div>
             </dd>
         </dl> 
 		<ol class="breadcrumb">
@@ -33,12 +33,14 @@
 </div>
 <div class="container">
     <div class="release-content">
-        <h3 th:text="${geeknews?.content}"></h3>
+	    <div id="editormds">
+	    	<textarea style="display:none;" th:text="${geeknews?.content}"></textarea>
+		</div>
 	</div>
     <div class="footer-bar">
         <div class="user-photo"> <img src="/images/user.jpg" class="avatar" alt=""> </div>
         <div class="user-right"> <a href="#" class="user-name">枯骨树先生</a>
-            <div class="information"><span>发布于</span><a href="#">前端</a><span>2017-10-24 16:20</span></div>
+            <div class="information"><span>发布于</span><a th:href="|/tarticle/${geeknews?.theme?.id}|"><h5 th:text="${geeknews?.theme?.themename}"></h5></a><span th:text="${#dates.format(geeknews?.ctime, 'yyyy-MM-dd HH:mm')}"></span></div>
         </div>
     </div>
     
@@ -65,7 +67,7 @@
                     <div class="user-info">
                         <div class="name"><a target="_blank" href="#" title="枯骨树先生" >枯骨树先生</a></div>
                 		<div class="text" th:text="${comment?.comment}"></div>
-                        <div class="time">2017-2-27</div>
+                        <div class="time"><spam th:text="${#dates.format(comment?.ctime, 'yyyy-MM-dd HH:mm')}"></spam></div>
                     </div>
                 </div>
             </li>
@@ -78,6 +80,22 @@
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/base.js}"></script>
+<script src="../static/js/editor_md/editormd.min.js" th:src="@{/js/editor_md/editormd.min.js}"></script>
+<script src="../static/js/editor_md/lib/marked.min.js" th:src="@{/js/editor_md/lib/marked.min.js}"></script>
+<script src="../static/js/editor_md/lib/prettify.min.js" th:src="@{/js/editor_md/lib/prettify.min.js}"></script>
+<script src="../static/js/editor_md/lib/raphael.min.js" th:src="@{/js/editor_md/lib/raphael.min.js}"></script>
+<script src="../static/js/editor_md/lib/underscore.min.js" th:src="@{/js/editor_md/lib/underscore.min.js}"></script>
+<script src="../static/js/editor_md/lib/sequence-diagram.min.js" th:src="@{/js/editor_md/lib/sequence-diagram.min.js}"></script>
+<script src="../static/js/editor_md/lib/flowchart.min.js" th:src="@{/js/editor_md/lib/flowchart.min.js}"></script>
+<script src="../static/js/editor_md/lib/jquery.flowchart.min.js" th:src="@{/js/editor_md/lib/jquery.flowchart.min.js}"></script>
+
+<script type="text/javascript">
+  $(function() {
+      var editor = editormd.markdownToHTML("editormds", {
+          path: "[[@{/js/editor_md/lib/}]]",
+      });
+  });
+</script> 
 <script>
 $(function() {
 

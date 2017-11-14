@@ -172,7 +172,7 @@
                         <ul class="list-inline">
                             <li><i class="fa fa-file-text-o"></i></li>
                             <li>24分钟前</li>
-                            <li><a href="#" data-target="" target="_blank">前端</a></li>
+                            <li><a th:href="|/tarticle/${news?.theme?.id}|" data-target="" target="_blank"><h5 th:text="${news?.theme?.themename}"></h5></a></li>
                             <li class="read_num"><span>阅读数</span><em>81</em></li>
                         </ul>
                     </dd>
