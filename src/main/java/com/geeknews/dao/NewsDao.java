@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.geeknews.domain.Geeknews;
+import com.geeknews.domain.Theme;
 import com.geeknews.utils.MyPage;
 @Repository
 @Transactional
@@ -63,10 +64,10 @@ public class NewsDao extends BaseDao<Geeknews>{
 		}
 	}
 	
-	public MyPage<Geeknews> findtheme(String themeid,int page,int pagesize){
+	public MyPage<Geeknews> findtheme(Theme theme,int page,int pagesize){
 		try{
 			DetachedCriteria dc = DetachedCriteria.forClass(Geeknews.class);
-			dc.add(Property.forName("classificationid").eq(themeid));
+			dc.add(Property.forName("theme").eq(theme));
 			return this.findPageByCriteria(dc,pagesize,page);
 		} catch (RuntimeException re) {
 			throw re;

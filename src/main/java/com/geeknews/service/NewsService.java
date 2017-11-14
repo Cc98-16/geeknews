@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.geeknews.dao.NewsDao;
 import com.geeknews.domain.Geeknews;
+import com.geeknews.domain.Theme;
 import com.geeknews.utils.MyPage;
 import com.geeknews.utils.ServiceException;
 import com.geeknews.valid.NewsForm;
@@ -21,7 +22,7 @@ public class NewsService {
 	@Resource
 	private NewsDao newsDao;
 	
-	public void Newsinput(NewsForm newsForm,String classificationid,String link,String seuserid){
+	public void Newsinput(NewsForm newsForm,Theme theme,String link,String seuserid){
 		try {
 			List<Geeknews> title = newsDao.findbytitle(newsForm.getTitle());
 			if(title !=null && !title.isEmpty()){
@@ -32,7 +33,7 @@ public class NewsService {
 				BeanUtils.copyProperties(newsForm, news,Geeknews.class);
 				news.setLink(link);
 				news.setUserid(seuserid);
-				news.setClassificationid(classificationid);
+				news.setTheme(theme);
 				newsDao.save(news);
 			}
 		} catch (ServiceException e) {
@@ -48,9 +49,9 @@ public class NewsService {
 		}
 	}
 	
-	public MyPage<Geeknews> findtheme(String themeid,int page,int pagesize){
+	public MyPage<Geeknews> findtheme(Theme theme,int page,int pagesize){
 		try{
-			return newsDao.findtheme(themeid, page, pagesize);		
+			return newsDao.findtheme(theme, page, pagesize);		
 		}catch(ServiceException e){
 			throw e;
 		}

@@ -7,7 +7,9 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -30,13 +32,15 @@ public class Geeknews {
 	
 	private String link;		//链接
 	
-	private String classificationid; //分类ID
-	
 	@CreationTimestamp
 	private Timestamp ctime;	//发布时间
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Comment> comment = new ArrayList<>();
+	
+	@OneToOne
+	@JoinColumn(name="themeId")
+	private Theme theme;
 	
 	public void init(){
 		this.id = ID.uuid();
@@ -83,14 +87,6 @@ public class Geeknews {
 		this.link = link;
 	}
 
-	public String getClassificationid() {
-		return classificationid;
-	}
-
-	public void setClassificationid(String classificationid) {
-		this.classificationid = classificationid;
-	}
-
 	public Timestamp getCtime() {
 		return ctime;
 	}
@@ -105,6 +101,14 @@ public class Geeknews {
 
 	public void setComment(List<Comment> comment) {
 		this.comment = comment;
+	}
+
+	public Theme getTheme() {
+		return theme;
+	}
+
+	public void setTheme(Theme theme) {
+		this.theme = theme;
 	}
 	
 }

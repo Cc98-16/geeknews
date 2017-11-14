@@ -12,9 +12,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.geeknews.domain.Geeknews;
 import com.geeknews.domain.Theme;
-import com.geeknews.utils.MyPage;
 @Repository
 @Transactional
 public class ThemeDao extends BaseDao<Theme>{

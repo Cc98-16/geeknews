@@ -47,7 +47,7 @@
         <div class="Jcommentform comment-form" style="display: none;">
             <form name="fm_info_cm" th:action="@{/commentinput}">
                 <a href="#"><img class="userimage" alt="枯骨树先生" src="/images/user.jpg" height="28px" width="28px"></a>
-                <textarea class="textarea" name="content" style="margin-top: 0px; margin-bottom: 0px; height: 36px;width:100%;border-radius: 5px;border: 1px #666 solid;"></textarea>
+                <textarea class="textarea" name="comment" style="margin-top: 0px; margin-bottom: 0px; height: 36px;width:100%;border-radius: 5px;border: 1px #666 solid;"></textarea>
                 <input th:value="${geeknews?.id}" name="newsid" type="hidden">
                 <div class="clearfix">
                     <input type="button" name="submit" class="mdl-button mdl-js-button mdl-button--raised sendBtn"  data-upgraded=",MaterialButton" value="发布评论">
@@ -57,48 +57,21 @@
         </div>
     </div>
     
-    <div class="wcl-list" name="comment_load_box">
+    <div class="wcl-list" name="comment_load_box" th:each="comment,iterStat : ${ps?.items}">
         <ul name="JCommentUl" class="comment-ul" th:remove="all-but-first">
             <li>
                 <a target="_blank" href="#" title="枯骨树先生"><img width="60px" height="60px" class="userimage" src="../static/img/header.jpg" alt="网信" th:src="${(citem?.user?.logo != null && !#strings.isEmpty(citem?.user?.logo)) ? citem?.user?.logo : '/images/user.jpg'}" th:alt="${citem?.user?.name}"></a>
                 <div class="userdiv">
                     <div class="user-info">
                         <div class="name"><a target="_blank" href="#" title="枯骨树先生" >枯骨树先生</a></div>
-                		<div class="text">这是枯骨树先生的评论内容</div>
+                		<div class="text" th:text="${comment?.comment}"></div>
                         <div class="time">2017-2-27</div>
                     </div>
                 </div>
             </li>
         </ul>
     </div>
-    <div class="wcl-list" name="comment_load_box">
-        <ul name="JCommentUl" class="comment-ul" th:remove="all-but-first">
-            <li>
-                <a target="_blank" href="#" title="枯骨树先生"><img width="60px" height="60px" class="userimage" src="../static/img/header.jpg" alt="网信" th:src="${(citem?.user?.logo != null && !#strings.isEmpty(citem?.user?.logo)) ? citem?.user?.logo : '/images/user.jpg'}" th:alt="${citem?.user?.name}"></a>
-                <div class="userdiv">
-                    <div class="user-info">
-                        <div class="name"><a target="_blank" href="#" title="枯骨树先生" >枯骨树先生</a></div>
-                		<div class="text">这是枯骨树先生的评论内容</div>
-                        <div class="time">2017-2-27</div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <div class="wcl-list" name="comment_load_box">
-        <ul name="JCommentUl" class="comment-ul" th:remove="all-but-first">
-            <li>
-                <a target="_blank" href="#" title="枯骨树先生"><img width="60px" height="60px" class="userimage" src="../static/img/header.jpg" alt="网信" th:src="${(citem?.user?.logo != null && !#strings.isEmpty(citem?.user?.logo)) ? citem?.user?.logo : '/images/user.jpg'}" th:alt="${citem?.user?.name}"></a>
-                <div class="userdiv">
-                    <div class="user-info">
-                        <div class="name"><a target="_blank" href="#" title="枯骨树先生" >枯骨树先生</a></div>
-                		<div class="text">这是枯骨树先生的评论内容</div>
-                        <div class="time">2017-2-27</div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
+
 </div>
 </div>
 <div style="height: 60px;"></div>

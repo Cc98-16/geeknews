@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.geeknews.domain.Theme;
 import com.geeknews.service.NewsService;
 import com.geeknews.service.ThemeService;
 import com.geeknews.utils.Result;
@@ -33,7 +34,8 @@ public class NewsController extends BaseController{
 	@ResponseBody
 	@PostMapping(value = "/newsinput")
 	public  Map<String,Object> NewsInput(@Valid NewsForm newsForm,String classificationid,String link){
-		newsService.Newsinput(newsForm,classificationid,link,seuserid);
+		Theme theme = themeService.findById(classificationid);
+		newsService.Newsinput(newsForm,theme,link,seuserid);
 		return Result.toUrl("/");
 	}
 }

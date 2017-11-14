@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.geeknews.domain.Theme;
 import com.geeknews.service.NewsService;
 import com.geeknews.service.ThemeService;
 import com.geeknews.utils.Result;
@@ -41,7 +42,8 @@ public class ThemeController extends BaseController{
 	@GetMapping("/tarticle/{themeid}")
 	public String ThemeIndex(@PathVariable String themeid,Model model){
 		model.addAttribute("theme",themeService.findAll(keyword));
-		model.addAttribute("ps",newsService.findtheme(themeid, page, pagesize));
+		Theme theme = themeService.findById(themeid);
+		model.addAttribute("ps",newsService.findtheme(theme, page, pagesize));
 		model.addAttribute("themeid",themeService.findById(themeid));
 		return "tarticle";
 	}
