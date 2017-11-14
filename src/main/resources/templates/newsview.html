@@ -17,14 +17,12 @@
             <dd>
                 <h3  class="title" th:text="${geeknews?.title}"></h3>
                 <ul class="list-inline">
-                    <li>24分钟前</li>
                 </ul>
-                <div class="list-inline"><a th:href="|/tarticle/${geeknews?.theme?.id}|" class=""><span th:text="${geeknews?.theme?.themename}"></span></a></div>
             </dd>
         </dl> 
 		<ol class="breadcrumb">
-		  <li><a href="#">首页</a></li>
-		  <li><a href="/">主题</a></li>
+		  <li><a href="/">首页</a></li>
+		  <li><a th:href="|/tarticle/${geeknews?.theme?.id}|"><span th:text="${geeknews?.theme?.themename}"></span></a></li>
 		  <li class="active">头条详情</li>
 		</ol>
     </div>
