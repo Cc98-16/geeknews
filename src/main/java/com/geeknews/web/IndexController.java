@@ -21,7 +21,7 @@ public class IndexController extends BaseController{
 	public String Index(Model model){
 		MyPage<Geeknews> news = newsService.findAll(keyword,page,pagesize);
 		model.addAttribute("ps",news);
-		model.addAttribute("theme",themeService.findAll(keyword));
+		model.addAttribute("theme",themeService.findAll());
 		return "index";
 	}
 }

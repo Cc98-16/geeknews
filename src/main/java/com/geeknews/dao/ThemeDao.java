@@ -48,14 +48,9 @@ public class ThemeDao extends BaseDao<Theme>{
 		}
 	}
 	
-	public List<Theme> findAll(String keyword){
+	public List<Theme> findAll(){
 		try {
 			DetachedCriteria dc = DetachedCriteria.forClass(Theme.class);
-			if(StringUtils.isNotBlank(keyword)){
-				Disjunction diskey = Restrictions.disjunction();
-				diskey.add(Property.forName("themename").like(keyword,MatchMode.ANYWHERE));
-				dc.add(diskey);
-			}
 			Criteria criteria = dc.getExecutableCriteria(getSession());
 			return criteria.list();
 		} catch (RuntimeException re) {

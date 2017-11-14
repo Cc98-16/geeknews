@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
 <title>index</title>
+<link rel="stylesheet" href="../static/css/base.css" th:href="@{/css/base.css}">
 <link rel="stylesheet" href="../static/css/index.css" th:href="@{/css/index.css}">
 <link rel="stylesheet" href="../static/fonts/font-awesome.min.css" th:href="@{/fonts/font-awesome.min.css}">
 <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
@@ -76,11 +77,11 @@
                 <li class="theme-menua"><span class="toggle-subnav"><a href="Javascript: void(0)" class="changeleft">全部主题</a></span></li>
                 <li class="theme-menu"> <span class="toggle-subnav">热门主题</span> <a href="#" class="flip"><i class="fa fa-angle-down"></i></a>
                     <dl class="hot_forum start">
-                        <a href="/theme" title="物联网（IoT）"> <img src="/images/loT.jpg" alt=""> </a>
-                        <a href="#" title="Android开发者"> <img src="/images/android.png" alt=""> </a>
-                        <a href="#" title="Java开发者"> <img src="/images/java.jpg" alt=""> </a>
-                        <a href="#" title="安全"> <img src="/images/security.jpg" alt=""> </a>
-                        <a href="#" title="潜水猿"> <img src="/images/cry.jpeg" alt=""> </a>
+                        <a href="/tarticle/0998fb5f6ca3420ab45006b224da5dc2" title="物联网（IoT）"> <img src="/images/loT.jpg" alt=""> </a>
+                        <a href="/tarticle/cab2cfbdaed34ebd88d8b85fa8e589cb" title="Android开发者"> <img src="/images/android.png" alt=""> </a>
+                        <a href="/tarticle/12ba19415ff84b7db6a8d1867085274f" title="Java开发者"> <img src="/images/java.jpg" alt=""> </a>
+                        <a href="/tarticle/2da34436a96c4d41b1a07c909274bfdc" title="安全"> <img src="/images/security.jpg" alt=""> </a>
+                        <a href="/tarticle/aa8d8f38659949a0ab01cc324075e6dd" title="潜水猿"> <img src="/images/cry.jpeg" alt=""> </a>
                     </dl>
                 </li>
                 
@@ -179,11 +180,14 @@
                     <dt class="right"> <a href="#" target="_blank"> <img src="/images/user.jpg" class="avatar"> </a> </dt>
                 </dl>
             </div>
+            <div th:replace="base :: pagination"></div>
         </div>
+        
     </div>
 </div>
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script> 
 <script th:src="@{/js/base.js}"></script>
+<script th:src="@{/js/jquery.page.js}"></script> 
 </body>
 </html>

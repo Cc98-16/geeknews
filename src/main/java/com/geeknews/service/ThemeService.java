@@ -37,9 +37,9 @@ public class ThemeService {
 		}
 	}
 	
-	public List<Theme> findAll(String keyword){
+	public List<Theme> findAll(){
 		try{
-			return themeDao.findAll(keyword);		
+			return themeDao.findAll();		
 		}catch(ServiceException e){
 			throw e;
 		}

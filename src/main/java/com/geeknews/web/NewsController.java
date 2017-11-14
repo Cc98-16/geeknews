@@ -28,7 +28,7 @@ public class NewsController extends BaseController{
 	
 	@GetMapping("/newsinput")
 	public String InputIndex(Model model){
-		model.addAttribute("theme",themeService.findAll(keyword));
+		model.addAttribute("theme",themeService.findAll());
 		return "release";
 	}
 	@ResponseBody

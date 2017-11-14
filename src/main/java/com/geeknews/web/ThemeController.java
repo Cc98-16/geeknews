@@ -41,7 +41,7 @@ public class ThemeController extends BaseController{
 	
 	@GetMapping("/tarticle/{themeid}")
 	public String ThemeIndex(@PathVariable String themeid,Model model){
-		model.addAttribute("theme",themeService.findAll(keyword));
+		model.addAttribute("theme",themeService.findAll());
 		Theme theme = themeService.findById(themeid);
 		model.addAttribute("ps",newsService.findtheme(theme, page, pagesize));
 		model.addAttribute("themeid",themeService.findById(themeid));
