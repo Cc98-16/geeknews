@@ -64,4 +64,16 @@ public class NewsService {
 			throw e;
 		}
 	}
+	
+	public void NewsMerge(NewsForm newsForm,String newsid){
+		try {
+			Geeknews geeknews = newsDao.findById(newsid);
+			
+			BeanUtils.copyProperties(newsForm, geeknews, Geeknews.class);
+			
+			newsDao.merge(geeknews);
+		} catch (ServiceException e) {
+			throw e;
+		}
+	}
 }

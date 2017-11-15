@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -53,6 +54,7 @@ public class NewsDao extends BaseDao<Geeknews>{
 	public MyPage<Geeknews> findAll(String keyword,int page,int pagesize){
 		try{
 			DetachedCriteria dc = DetachedCriteria.forClass(Geeknews.class);
+			dc.addOrder(Order.desc("ctime"));
 			if(StringUtils.isNotBlank(keyword)){
 				Disjunction diskey = Restrictions.disjunction();
 				diskey.add(Property.forName("title").like(keyword,MatchMode.ANYWHERE));
@@ -68,7 +70,16 @@ public class NewsDao extends BaseDao<Geeknews>{
 		try{
 			DetachedCriteria dc = DetachedCriteria.forClass(Geeknews.class);
 			dc.add(Property.forName("theme").eq(theme));
+			dc.addOrder(Order.desc("ctime"));
 			return this.findPageByCriteria(dc,pagesize,page);
+		} catch (RuntimeException re) {
+			throw re;
+		}
+	}
+	
+	public void merge(Geeknews news){
+		try {
+			getSession().merge(news);
 		} catch (RuntimeException re) {
 			throw re;
 		}

@@ -172,7 +172,7 @@
                         <span> <a th:href="|/newsview/${news?.id}|" class="title"><h5 th:text="${news?.title}"></h5></a></span>
                         <ul class="list-inline">
                             <li><i class="fa fa-file-text-o"></i></li>
-                            <li>24分钟前</li>
+                            <li><span th:text="${#dates.format(news?.ctime, 'yyyy-MM-dd HH:mm')}"></span></li>
                             <li><a th:href="|/tarticle/${news?.theme?.id}|" data-target="" target="_blank"><span th:text="${news?.theme?.themename}"></span></a></li>
                         </ul>
                     </dd>
