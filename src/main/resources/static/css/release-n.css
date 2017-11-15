@@ -188,6 +188,33 @@ ul > li > span > .fa {
 .new_theme:hover{
 	color: #fff !imporant;
 }
+.return-top{
+    position: absolute;
+    background-color: red;
+    padding: 13px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    bottom: 10px;
+    right: 10px;
+}
+.return-top i{
+	color: #fff;
+}
+
+.return-edit{
+    position: absolute;
+    background-color: red;
+    padding: 13px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    bottom: 80px;
+    right: 10px;
+}
+.return-edit i{
+	color: #fff;
+}
 
  @media (max-width:734px) {
  .article-top {
