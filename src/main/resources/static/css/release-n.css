@@ -3,7 +3,7 @@
 .article-top {
 	background: #0f88eb;
 	padding: 30px 25px 25px 25px;
-	height: 220px;
+	height: 175px;
 }
 .title {
 	color: #fff;
@@ -48,7 +48,7 @@
 .geek_list dd {
 	position: relative;
 	margin: 0 0 0 50px;
-	height: 130px;
+	height: 85px;
 	padding-top: 8px;
 }
 ul > li > span > .fa {
@@ -189,28 +189,30 @@ ul > li > span > .fa {
 	color: #fff !imporant;
 }
 .return-top{
-    position: absolute;
+    position: fixed;
     background-color: red;
     padding: 13px;
+    box-shadow: 1px 2px 5px #888888;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    bottom: 10px;
-    right: 10px;
+    bottom: 100px;
+    right: 30px;
 }
 .return-top i{
 	color: #fff;
 }
 
 .return-edit{
-    position: absolute;
+    position: fixed;
     background-color: red;
     padding: 13px;
+    box-shadow: 1px 2px 5px #888888;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    bottom: 80px;
-    right: 10px;
+    bottom: 30px;
+    right: 30px;
 }
 .return-edit i{
 	color: #fff;
