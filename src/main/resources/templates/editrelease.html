@@ -15,17 +15,17 @@
         <header>
             <h1>文章修改</h1>
         </header>
-        <form class="form-group release-form row" th:action="@{/newsinput}">
-            <input type="text" name="title" class="form-control release-title col-md-6" placeholder="输入标题">
+        <form class="form-group release-form row" th:action="|/News/${news?.id}|">
+            <input type="text" name="title" class="form-control release-title col-md-6" th:value="${news?.title}">
             
-            <select class="form-control ralease-theme col-md-6" name="classificationid">
-                <option  th:each="theme,status:${theme}" th:text="${theme?.themename}" th:value="${theme?.id}" ></option>
+            <select class="form-control ralease-theme col-md-6" disabled="disabled" name="classificationid">
+                <option th:text="${news?.theme?.themename}"></option>
             </select>
             <div data-error="title" style="color:#FF0000; margin-top:60px; text-align: left;"></div>
        
         <div id="layout" style="margin-top:30px;">
             <div id="test-editormd">
-                <textarea style="display:none;" name="content"></textarea>
+                <textarea style="display:none;" name="content" th:text="${news?.content}"></textarea>
             </div>
             <div data-error="content" style="color:#FF0000"></div>
         </div>

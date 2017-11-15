@@ -12,7 +12,6 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @SpringBootApplication
-@Controller
 public class GeeknewsApplication {
 
 	public static void main(String[] args) {
@@ -34,8 +33,4 @@ public class GeeknewsApplication {
 		return messageSource;
 	}
 	
-	@GetMapping("test")
-	public String test() {
-		return "editrelease";
-	}
 }
