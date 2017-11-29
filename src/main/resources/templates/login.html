@@ -16,7 +16,7 @@
         <h3>极客头条</h3>
       </div>
       <p>Sign into your pages account</p>
-      <form name="login" action="http://10.1.65.33:81/login" method="post">
+      <form name="login" th:action="@{/login}" method="post">
         <div class="form-group">
           <label class="sr-only" for="inputEmail">账号</label>
           <input type="text" class="form-control" id="inputAccount" name="account" placeholder="输入账号" autofocus>
@@ -27,7 +27,8 @@
           <input type="password" class="form-control" id="inputPassword" name="password" placeholder="输入密码" autocomplete="off">
           <div data-error="password" style="color:#FF0000"></div>
         </div>
-        <button type="button" class="btn btn-primary btn-block" id="login">登录</button>
+        <input type="button"  name="submit" class="btn btn-primary btn-block"  value="登录">
+        <a href="/register" class="btn btn-primary btn-block">前往注册</a>
       </form>
     </div>
   </div>
@@ -35,8 +36,8 @@
 <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script> 
 <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script src="../static/js/base.js" th:src="@{/js/base.js}"></script>
-<script type="text/javascript">
-	$(function() {
+<!-- <script type="text/javascript">
+ 	$(function() {
 		$(document).on("click", "#login", function(e){
 			var form = $(this).parents("form");
 			var url = $(form).attr("action");
@@ -81,6 +82,6 @@
 		});
 	})
 
-</script>
+</script> -->
 </body>
 </html>

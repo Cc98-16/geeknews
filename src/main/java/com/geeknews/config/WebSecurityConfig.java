@@ -15,7 +15,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class WebSecurityConfig extends WebMvcConfigurerAdapter{
 	
 	public final static String USERID = "seuserid";
-	public final static String USERACCOUNT = "seuseraccount";
+	public final static String USER = "seuser";
+	
     @Bean
     public SecurityInterceptor getSecurityInterceptor (){
 		return new SecurityInterceptor();
@@ -39,7 +40,7 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter{
     	public boolean preHandle(HttpServletRequest request,HttpServletResponse response,Object handler)
     			throws Exception {
     				HttpSession session = request.getSession();
-    				if(session.getAttribute(USERID) != null || session.getAttribute(USERACCOUNT) != null)
+    				if(session.getAttribute(USER) != null )
     				return true;
     				
     				// 跳转登录

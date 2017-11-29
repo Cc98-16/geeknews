@@ -1,4 +1,5 @@
 $(function() {
+	
 	/** 全局链接抛出消息 **/
     $(document).on("click", "a", function(event) {
 	   	event.preventDefault();

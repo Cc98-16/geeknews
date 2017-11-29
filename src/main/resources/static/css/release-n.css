@@ -223,3 +223,65 @@ ul > li > span > .fa {
  height: 220px;
 }
 }
+
+
+
+
+
+.wcl-list{
+	height: 65px;
+}
+.wcl-list .time{
+	float: left;
+}
+.wcl-list .ns_dzpl{
+	margin-left: 120px;
+	margin-top: 1px;
+}
+.ns_dz{
+	float: left;
+	width: 40px;
+}
+.wcl-list .ns_dzpl i{
+	float: left;
+	font-size: 16px;
+	margin-right: 3px;
+    color: #999;
+}
+.ns_dzpl .ns_dzpl_p{
+	font-size: 12px;
+	line-height: 16px;
+}
+.ns_pl{
+	opacity: 0;
+	width: 50px;
+	transition: 0.5s;
+	float: left;
+	cursor: pointer;
+}
+.ns_hfpl{
+	position: absolute;
+	display: block;
+    margin-left: 140px;
+    margin-top: -40px;
+}
+.ns_qz{
+	opacity: 0;
+	width: 50px;
+	transition: 0.5s;
+	float: left;
+	cursor: pointer;
+}
+.wcl-list:hover .ns_pl, .wcl-list:hover .ns_qz{
+	opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+

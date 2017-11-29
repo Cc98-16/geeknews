@@ -35,7 +35,7 @@ public class ThemeController extends BaseController{
 	@PostMapping(value = "/themesave")
 	public Map<String, Object> ThemeSave(@Valid ThemeForm themeForm){
 		String tname = themeForm.getThemename();
-		themeService.ThemeSave(themeForm,tname);
+		themeService.ThemeSave(themeForm,tname,seuserid);
 		return Result.toUrl("/");
 	}
 	

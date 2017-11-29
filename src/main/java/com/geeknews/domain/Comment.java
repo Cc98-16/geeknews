@@ -22,7 +22,9 @@ public class Comment {
 	
 	private String comment;			//发布的评论
 	
-	private String userid;			//发布的用户
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;			//发布的用户
 	
     @ManyToOne
     @JoinColumn(name="geeknews_id")
@@ -52,12 +54,12 @@ public class Comment {
 		this.comment = comment;
 	}
 
-	public String getUserid() {
-		return userid;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Geeknews getGeeknews() {
@@ -75,5 +77,4 @@ public class Comment {
 	public void setCtime(Timestamp ctime) {
 		this.ctime = ctime;
 	}
-	
 }

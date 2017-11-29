@@ -2,12 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>注册 - 尚课学</title>
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-    <link href="../static/css/icheck/icheck_all.css" rel="stylesheet" th:href="@{/css/icheck/icheck_all.css}">
-    <link href="../static/css/user.css" rel="stylesheet" th:href="@{/css/user.css}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>注册 - 极客头条</title>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- <link href="../static/css/icheck/icheck_all.css" rel="stylesheet" th:href="@{/css/icheck/icheck_all.css}"> -->
+    <link href="../static/css/user.css" rel="stylesheet" th:href="@{/css/user.css}">
+    <!-- <link rel="stylesheet " href="../static/js/messenger/css/messenger.css " th:href="@{/js/messenger/css/messenger.css} ">
+    <link rel="stylesheet " href="../static/js/messenger/css/messenger-theme-flat.css " th:href="@{/js/messenger/css/messenger-theme-flat.css} "> -->
 </head>
 
 <body>
@@ -15,16 +17,16 @@
         <div class="row">
             <div class="login-content">
                 <div class="login-body">
-                    <form action="#" method="post" th:action="@{/register}">
+                    <form method="post" th:action="@{/register}">
                         <div class="full-auth mt-3">
                             <!-- <label for="account">输入手机或邮箱</label> -->
-                            <input class="login_field" id="account" name="account" th:data-url="@{/register/account/detect}" type="text" placeholder="输入手机或邮箱">
+                            <input class="login_field" id="account" name="account" th:data-url="@{/register/account/detect}" type="text" placeholder="输入账号">
                             <span class="help-block" data-error="account"></span>
                         </div>
                         <div class="full-auth mt-3">
                             <!-- <label for="password">输入6至16位密码</label> -->
-                            <input class="login_field" id="pwd1" name="npassword" type="password" placeholder="输入6至16位密码">
-                            <span class="help-block" data-error="npassword"></span>
+                            <input class="login_field" id="pwd1" name="password" type="password" placeholder="输入6至16位密码">
+                            <span class="help-block" data-error="password"></span>
                         </div>
                         <div class="full-auth mt-3">
                             <!-- <label for="password">确认密码</label> -->
@@ -32,13 +34,10 @@
                             <span class="help-block " data-error="cpassword "></span>
                             <span id="tishi"></span>
                         </div>
-
-
-
                         <div class="user_fuwu full-auth vericodes_register full-width ">
 
                         </div>
-                        <button type="button " class="btn btn-default btn-color " id="btn_register " name="submit ">确定注册</button>
+                        <input type="button"  name="submit" class="btn btn-default btn-color " id="btn_register "  value="确认注册">
                     </form>
                 </div>
                 <div class="create-account ">
@@ -49,7 +48,7 @@
         </div>
     </div>
     <footer class="footer_in_bottom ">
-        Copyright &copy; 2017 youkke.com
+        Copyright &copy; 2017 geeknews.com
         <ul class="f-menu ">
             <li><a href="# ">首页</a></li>
             <li><a href="# ">隐私权</a></li>
@@ -62,16 +61,15 @@
     </footer>
 
 
-    <script src="../static/js/jquery-1.11.3.min.js " th:src="@{/js/jquery-1.11.3.min.js} "></script>
+    <script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+    <!-- <script src="../static/js/messenger/js/messenger-theme-flat.js" th:src="@{/js/messenger/js/messenger-theme-flat.js}"></script>
+    <script src="../static/js/messenger/js/messenger.min.js" th:src="@{/js/messenger/js/messenger.min.js}"></script> -->
     <script src="../static/js/bootstrap.min.js " th:src="@{/js/bootstrap.min.js} "></script>
-    <link rel="stylesheet " href="../static/js/messenger/css/messenger.css " th:href="@{/js/messenger/css/messenger.css} ">
-    <link rel="stylesheet " href="../static/js/messenger/css/messenger-theme-flat.css " th:href="@{/js/messenger/css/messenger-theme-flat.css} ">
-    <script src="../static/js/messenger/js/messenger.min.js " th:src="@{/js/messenger/js/messenger.min.js} "></script>
-    <script src="../static/js/messenger/js/messenger-theme-flat.js " th:src="@{/js/messenger/js/messenger-theme-flat.js} "></script>
-    <script src="../static/js/base.js " th:src="@{/js/base.js} "></script>
-    <script src="../static/js/forget.js " th:src="@{/js/forget.js} "></script>
+    <!-- <script src="../static/js/icheck.min.js" th:src="@{/js/icheck.min.js}"></script>
+    <script src="../static/js/forget.js " th:src="@{/js/forget.js}"></script> -->
+    <script src="../static/js/base.js" th:src="@{/js/base.js}"></script>
     <script>
-        function validate(pwd1, pwd1) {
+        function validate(pwd1, pwd2) {
 
             var pwd1 = document.getElementById("pwd1").value;
             var pwd2 = document.getElementById("pwd2").value;
@@ -116,7 +114,7 @@
             });
         });
     </script>
-    <script src="../static/js/icheck.min.js" th:src="@{/js/icheck.min.js}"></script>
+    
 </body>
 
 </html>

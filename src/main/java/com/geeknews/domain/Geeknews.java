@@ -8,8 +8,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -24,8 +24,6 @@ public class Geeknews {
 	@Id
 	private String id;
 	
-	private String userid;		//发布的用户
-	
 	private String title;		//标题
 	
 	private String content;		//内容
@@ -38,9 +36,13 @@ public class Geeknews {
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Comment> comment = new ArrayList<>();
 	
-	@OneToOne
-	@JoinColumn(name="themeId")
+	@ManyToOne
+	@JoinColumn(name="theme_id")
 	private Theme theme;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;		//发布的用户
 	
 	public void init(){
 		this.id = ID.uuid();
@@ -55,12 +57,12 @@ public class Geeknews {
 		this.id = id;
 	}
 
-	public String getUserid() {
-		return userid;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getTitle() {
