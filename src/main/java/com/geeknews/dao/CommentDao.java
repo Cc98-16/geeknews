@@ -42,4 +42,13 @@ public class CommentDao extends BaseDao<Comment>{
 			throw re;
 		}
 	}
+	
+	public Comment findById(String id){
+		try {
+			Comment comment = getSession().get(Comment.class, id);
+			return comment;
+		} catch (RuntimeException re) {
+			throw re;
+		}
+	}
 }

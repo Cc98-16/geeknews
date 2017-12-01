@@ -47,6 +47,7 @@ $(function() {
     	var data = $(form).serialize();
     	$("[data-error]").html("");
     	$.post(url,data,function(json){
+    		console.log(123);
     		var result = 1;
     		if(typeof(json.tourl) == "undefined" || json.tourl == ""){
     			$.each(json,function(code,msg){
@@ -65,6 +66,9 @@ $(function() {
     });
 });
 
+$(document).on("click","[data-replyload]",function(e){
+	
+})
 
 	 
 $(document).ready(function(){

@@ -77,22 +77,11 @@
 	                        	<i class="material-icons">thumb_up</i>
 	                        	<p class="ns_dzpl_p">30</p>
                         	</div>
-                        	<div class="ns_pl">
+                        	<div class="ns_pl" th:replyid="${comment?.id}" replytype="comment" id="ns_pl">
                         		<i class="material-icons">textsms</i>
+                        		<button th:data-replyload="" value="回复"></button>
                         		<p class="ns_dzpl_p">回复</p>
                         	</div>
-                        	<div  class="ns_hfpl comment-form" style="display: none;">
-					            <form name="fm_info_cm" th:action="@{/commentinput}">
-					                <a href="#"><img class="userimage" alt="枯骨树先生" src="/images/user.jpg" height="28px" width="28px"></a>
-					                <textarea class="textarea" name="comment" style="margin-top: 0px; margin-bottom: 0px; height: 36px;width:100%;border-radius: 5px;border: 1px #666 solid;"></textarea>
-					                <input th:value="${geeknews?.id}" name="newsid" type="hidden">
-					                <div data-error="comment" style="color:#FF0000"></div>
-					                <div class="clearfix">
-					                    <input type="button" name="submit" class="mdl-button mdl-js-button mdl-button--raised sendBtn"  data-upgraded=",MaterialButton" value="发布评论">
-					                    <button class="Jformhide mdl-button mdl-js-button mdl-button--raised cancelBtn lubin" type="button" data-upgraded=",MaterialButton">取消</button>
-					                </div>
-					            </form>
-					        </div>
                         	<div class="ns_qz">
                         		<i class="material-icons">flag</i>
                         		<p class="ns_dzpl_p">举报</p>
@@ -103,6 +92,7 @@
             </li>
         </ul>
     </div>
+    <div id="replyloadbox"></div>
 
 </div>
 </div>
@@ -147,6 +137,10 @@ $(function() {
 
     
     $(document).on("click", ".ns_pl", function() {
+    	var replyid = $("#ns_pl").attr("replyid");
+    	var replytype = $("#ns_pl").attr("replytype");
+    	$(this).next(".ns_hfpl").find("[name=replyid]").val(replyid);
+    	$(this).next(".ns_hfpl").find("[name=replytype]").val(replytype);
         $(this).next(".ns_hfpl").fadeIn("fast");
     });
     

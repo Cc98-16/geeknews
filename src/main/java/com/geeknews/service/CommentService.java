@@ -29,19 +29,15 @@ public class CommentService {
 	
 	public void CommentSave(CommentForm commentForm,String newsid,String seuserid){
 		try {
-			if(seuserid == null){
-				throw new ServiceException("comment","你还未登录，请登录后再试");
-			}else{
-				Geeknews geeknews = newsDao.findById(newsid);
-				User user = userDao.findById(seuserid);
-				
-				Comment comment = new Comment();
-				comment.init();
-				BeanUtils.copyProperties(commentForm, comment,Comment.class);
-				comment.setUser(user);
-				comment.setGeeknews(geeknews);
-				commentDao.save(comment);
-			}
+			Geeknews geeknews = newsDao.findById(newsid);
+			User user = userDao.findById(seuserid);
+			
+			Comment comment = new Comment();
+			comment.init();
+			BeanUtils.copyProperties(commentForm, comment,Comment.class);
+			comment.setUser(user);
+			comment.setGeeknews(geeknews);
+			commentDao.save(comment);
 		} catch (ServiceException e) {
 			throw e;
 		}
