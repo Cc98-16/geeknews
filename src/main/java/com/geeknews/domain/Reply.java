@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -38,8 +39,10 @@ public class Reply {
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@JoinColumn(name="to_uid")
 	private String touser;
+	
+	@Transient
+	private User touserbean;
 	
 	public void init(){
 		this.id = ID.uuid();
@@ -109,4 +112,13 @@ public class Reply {
 	public void setTouser(String touser) {
 		this.touser = touser;
 	}
+
+	public User getTouserbean() {
+		return touserbean;
+	}
+
+	public void setTouserbean(User touserbean) {
+		this.touserbean = touserbean;
+	}
+
 }

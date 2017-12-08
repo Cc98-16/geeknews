@@ -1,29 +1,28 @@
-<div class="reply" id="c_reply">
+<div name="onediv" class="reply" th:each="reply,iterStat : ${ps?.items}">
     <div class="yiyou">
-        <ul>
             <li class="single_post row">
                 <div class="user_card col-md-1">
                     <div class="x"><img src="../static/images/android.png" alt=""></div>
                 </div>
                 <div class="user_content col-md-11">
-                    <span class="user_id"><a href="#">白衬衫：</a></span>
-                    <span class="user_c">很高兴你还能往后看 我觉得应该没有几个人了</span>
+                    <span class="user_id"><a href="#" th:text="${reply?.user?.account}"></a></span>
+                    <span th:if="${reply?.touser != ''}">回复：<span><a href="#" th:text="${reply?.touserbean?.account}"></a></span></span>
+                    <span class="user_c" th:text="${reply?.content}"></span>
                 </div>
-                <div class="warp"><span style="margin-right:3px">时间：2017/11/30 20:20:80</span><span id="w_re">回复</span></div>
-            </li>
-            <li class="single_reply row">
-                <div class="user_card col-md-1"><img src="../static/images/user.jpg" alt=""></div>
-                <div class="user_content col-md-11">
-                    <span class="user_id"><a href="#">你爸</a></span><span>回复</span><span class="user_replier"><a href="#">白衬衫：</a></span>
-                    <span class="user_c">我看你妈呢</span>
+                <div name="warp" class="warp" th:touser="${reply?.user?.id}" th:commentid="${reply?.comment?.id}" th:replyid="${reply?.id}" th:tuname="${reply?.user?.account}" replytype="reply" ><span style="margin-right:3px" th:text="${#dates.format(reply?.ctime, 'yyyy-MM-dd HH:mm')}"></span>
+                <button name="replyone">回复</button>
                 </div>
-                <div class="warp"><span style="margin-right:3px">时间：2017/11/30 20:20:80</span><span id="w_re">回复</span></div>
             </li>
-
-        </ul>
-    </div>
-    <div class="reply_content">
-        <textarea class="textarea" name="content"></textarea>
-        <input type='button' value="发布" href="" class="mdl-button mdl-js-button mdl-button--raised sendBtn" />
     </div>
 </div>
+<form name="fm_info_cm" th:action="@{/replyinput}">
+	 <div class="reply_content">
+	     <textarea class="textarea" name="content"></textarea>
+	     <input type="hidden" name=commentid value=""/>
+	     <input type="hidden" name=touser value="" />
+	     <input type="hidden" name=replyid value="" />
+	     <input type="hidden" name=replytype value="" />
+	     <input type="hidden" name=newsid value="" />
+	     <input type="button" name="submit" value="发布" class="mdl-button mdl-js-button mdl-button--raised sendBtn" />
+	 </div>
+</form>

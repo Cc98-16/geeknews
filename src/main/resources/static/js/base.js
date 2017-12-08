@@ -67,9 +67,32 @@ $(function() {
 });
 
 $(document).on("click","[data-replyload]",function(e){
-	
+	var replyid = $("#ns_pl").attr("replyid");
+	var replytype = $("#ns_pl").attr("replytype");
+	var commentid = $("#ns_pl").attr("replyid")
+	var newsid = $("#ns_pl").attr("newsid")
+	var url = $(this).data("replyload");
+	$(this).parents("li").find("[name=replyloadbox]").load(url, function(){
+		$(this).show("fast");
+		$(this).find("[name=newsid]").val(newsid);
+		$(this).find("[name=replyid]").val(replyid);
+		$(this).find("[name=replytype]").val(replytype);
+		$(this).find("[name=commentid]").val(replyid);
+	});
 })
 
+$(document).on("click","[name='replyone']",function(e){
+	var touser = $(this).parents("[name=warp]").attr("touser");
+	var commentid = $(this).parents("[name=warp]").attr("commentid");
+	var replyid = $(this).parents("[name=warp]").attr("replyid");
+	var replytype = $(this).parents("[name=warp]").attr("replytype");
+	var tuname = $(this).parents("[name=warp]").attr("tuname");
+	$(this).parents("[name=onediv]").nextAll("form").find("[name=touser]").val(touser);
+	$(this).parents("[name=onediv]").nextAll("form").find("[name=commentid]").val(commentid);
+	$(this).parents("[name=onediv]").nextAll("form").find("[name=replyid]").val(replyid);
+	$(this).parents("[name=onediv]").nextAll("form").find("[name=replytype]").val(replytype);
+	$(this).parents("[name=onediv]").nextAll("form").find("[name=content]").attr("placeholder", "回复 "+tuname+" :");
+})
 	 
 $(document).ready(function(){
 $(".flip").click(function(){

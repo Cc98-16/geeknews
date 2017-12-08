@@ -1,6 +1,10 @@
 package com.geeknews.dao;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Property;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +32,7 @@ public class ReplyDao extends BaseDao<Reply>{
 		try {
 			DetachedCriteria dc = DetachedCriteria.forClass(Reply.class);
 			dc.add(Property.forName("comment").eq(comment));
+			dc.addOrder(Order.asc("ctime"));
 			return this.findPageByCriteria(dc,pagesize,page);
 		} catch (RuntimeException re) {
 			throw re;

@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.geeknews.domain.Comment;
 import com.geeknews.domain.Geeknews;
+import com.geeknews.domain.Reply;
 import com.geeknews.domain.Theme;
 import com.geeknews.service.CommentService;
 import com.geeknews.service.NewsService;
+import com.geeknews.service.ReplyService;
 import com.geeknews.service.ThemeService;
+import com.geeknews.service.UserService;
 import com.geeknews.utils.MyPage;
 import com.geeknews.utils.Result;
 import com.geeknews.valid.NewsForm;
@@ -33,6 +37,12 @@ public class NewsController extends BaseController{
 	
 	@Autowired
 	private CommentService commentServiece;
+	
+	@Autowired
+	private ReplyService replyService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping("/newsinput")
 	public String InputIndex(Model model){
@@ -68,5 +78,18 @@ public class NewsController extends BaseController{
 	public Map<String,Object> NewsMerge(@Valid NewsForm newsForm,@PathVariable String newsid){
 		newsService.NewsMerge(newsForm,newsid);
 		return Result.toUrl("/newsview/"+newsid);
+	}
+	
+	@GetMapping("/replyinput/{commentid}")
+	public String ReplyInput(@PathVariable String commentid,Model model){
+		Comment comment = commentServiece.findById(commentid);
+		MyPage<Reply> reply = replyService.findByComment(comment, page, pagesize);
+		for (Reply r : reply.getItems()) {
+			if(StringUtils.isNotBlank(r.getTouser())) {
+				r.setTouserbean(userService.findById(r.getTouser()));
+			}
+		}
+		model.addAttribute("ps",reply);
+		return "editreply";
 	}
 }

@@ -50,4 +50,12 @@ public class CommentService {
 			throw e;
 		}
 	}
+	
+	public Comment findById(String commentid){
+		try {
+			return commentDao.findById(commentid);
+		}catch(ServiceException e){
+			throw e;
+		}
+	}
 }

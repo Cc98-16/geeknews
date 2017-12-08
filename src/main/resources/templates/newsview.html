@@ -63,9 +63,9 @@
         </div>
     </div>
     
-    <div class="wcl-list" name="comment_load_box" th:each="comment,iterStat : ${ps?.items}">
-        <ul name="JCommentUl" class="comment-ul" th:remove="all-but-first">
-            <li>
+    <div  class="wcl-list" name="comment_load_box">
+        <ul name="JCommentUl" class="comment-ul" style="float: left;">
+            <li th:each="comment,iterStat : ${ps?.items}">
                 <a target="_blank" href="#" title="枯骨树先生"><img width="60px" height="60px" class="userimage" src="../static/img/header.jpg" alt="网信" th:src="${(citem?.user?.logo != null && !#strings.isEmpty(citem?.user?.logo)) ? citem?.user?.logo : '/images/user.jpg'}" th:alt="${citem?.user?.name}"></a>
                 <div class="userdiv">
                     <div class="user-info">
@@ -77,10 +77,9 @@
 	                        	<i class="material-icons">thumb_up</i>
 	                        	<p class="ns_dzpl_p">30</p>
                         	</div>
-                        	<div class="ns_pl" th:replyid="${comment?.id}" replytype="comment" id="ns_pl">
+                        	<div class="ns_pl" replytype="comment" id="ns_pl" th:replyid="${comment?.id}" th:newsid="${comment?.geeknews?.id}">
                         		<i class="material-icons">textsms</i>
-                        		<button th:data-replyload="" value="回复"></button>
-                        		<p class="ns_dzpl_p">回复</p>
+                        		<button th:data-replyload="|/replyinput/${comment?.id}|">查看回复</button>
                         	</div>
                         	<div class="ns_qz">
                         		<i class="material-icons">flag</i>
@@ -89,11 +88,10 @@
                         </div>
                     </div>
                 </div>
+                <div name="replyloadbox"></div>
             </li>
         </ul>
     </div>
-    <div id="replyloadbox"></div>
-
 </div>
 </div>
 <div style="height: 60px;"></div>

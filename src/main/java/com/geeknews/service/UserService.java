@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.geeknews.dao.UserDao;
+import com.geeknews.domain.Theme;
 import com.geeknews.domain.User;
 import com.geeknews.utils.ServiceException;
 import com.geeknews.valid.UserForm;
@@ -48,6 +49,14 @@ public class UserService {
 			}
 			return "success";
 		} catch (ServiceException e) {
+			throw e;
+		}
+	}
+	
+	public User findById(String id){
+		try {
+			return userDao.findById(id);
+		}catch(ServiceException e){
 			throw e;
 		}
 	}

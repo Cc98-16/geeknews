@@ -1,6 +1,8 @@
 package com.geeknews.service;
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.BeanUtils;
@@ -28,7 +30,7 @@ public class ReplyService {
 	@Resource
 	private ReplyDao replyDao;
 	
-	public void ReplySave(ReplyForm replyForm,String commentid,String touser,String replyid,String replytype,String seuserid){
+	public void ReplySave(ReplyForm replyForm,String commentid,String touserid,String replyid,String replytype,String seuserid){
 		try {
 			Comment comment = commentDao.findById(commentid);
 			User user = userDao.findById(seuserid);
@@ -38,7 +40,8 @@ public class ReplyService {
 			BeanUtils.copyProperties(replyForm, reply,Reply.class);
 			reply.setUser(user);
 			reply.setComment(comment);
-			reply.setTouser(touser);
+			
+			reply.setTouser(touserid);
 			reply.setReplyid(replyid);
 			reply.setReplytype(replytype);
 			
