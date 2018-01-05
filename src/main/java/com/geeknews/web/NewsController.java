@@ -49,8 +49,9 @@ public class NewsController extends BaseController{
 		model.addAttribute("theme",themeService.findAll());
 		return "release";
 	}
-	@ResponseBody
+	
 	@PostMapping(value = "/newsinput")
+	@ResponseBody
 	public  Map<String,Object> NewsInput(@Valid NewsForm newsForm,String classificationid,String link){
 		Theme theme = themeService.findById(classificationid);
 		newsService.Newsinput(newsForm,theme,link,seuserid);

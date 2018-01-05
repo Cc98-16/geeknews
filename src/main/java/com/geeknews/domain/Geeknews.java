@@ -44,6 +44,8 @@ public class Geeknews {
 	@JoinColumn(name="user_id")
 	private User user;		//发布的用户
 	
+	private int likenum; //点赞数
+	
 	public void init(){
 		this.id = ID.uuid();
 		this.ctime = Time.timestamp();
@@ -112,5 +114,12 @@ public class Geeknews {
 	public void setTheme(Theme theme) {
 		this.theme = theme;
 	}
-	
+
+	public int getLikenum() {
+		return likenum;
+	}
+
+	public void setLikenum(int likenum) {
+		this.likenum = likenum;
+	}
 }

@@ -93,6 +93,14 @@ $(document).on("click","[name='replyone']",function(e){
 	$(this).parents("[name=onediv]").nextAll("form").find("[name=replytype]").val(replytype);
 	$(this).parents("[name=onediv]").nextAll("form").find("[name=content]").attr("placeholder", "回复 "+tuname+" :");
 })
+
+$(document).on("click","[name='onlike']",function(e){
+	var newsid = $(this).parents("[name='like']").attr("newsid");
+	$.post("/liked",{"newsid":newsid},function(json){
+		if(json.result == "success")
+			location.reload(true);
+	});
+});
 	 
 $(document).ready(function(){
 $(".flip").click(function(){

@@ -1,8 +1,5 @@
 package com.geeknews.dao;
 
-import java.util.List;
-
-import org.hibernate.Criteria;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Property;

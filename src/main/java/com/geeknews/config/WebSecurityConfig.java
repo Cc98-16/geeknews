@@ -32,6 +32,7 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter{
     	addInterceptor.excludePathPatterns("/");
     	addInterceptor.excludePathPatterns("/commentinput");
     	addInterceptor.excludePathPatterns("/replyinput");
+    	addInterceptor.excludePathPatterns("/liked");
 		// 拦截配置
 		addInterceptor.addPathPatterns("/**");
     }

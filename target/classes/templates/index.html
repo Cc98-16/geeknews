@@ -184,13 +184,12 @@
             <div class="blog-list-container">
                 <div id="geek_list">
                     <dl class="geek_list" id="" th:each="news,iterStat : ${ps?.items}">
-                        <dt class="left">
-                        <div class="news_vote" voteid="240709">
-							<i class="fa fa-sort-up" datatype="up" onclick="document.getElementById('count').innerHTML++"></i>
-                            <div class="count" id="count"> 0 </div>
-                            <i class="fa fa-sort-down" datatype="down" onclick="document.getElementById('count').innerHTML--"></i>
-						</div>
-                    </dt>
+	                    <dt class="left" name="like" th:newsid="${news?.id}">
+	                        <div class="news_vote" voteid="240709">
+								<button class="mdl-button mdl-button--icon dropdown-toggle" name="onlike"><span if="${}"><i class="fa fa-sort-up grey" datatype="up"></i></span></button>
+	                            <div class="count" id="count"><span th:text="${news?.likenum}"></span></div>
+							</div>
+	                    </dt>
                         <dd data-dsm="post" data-poputype="feed" data-feed-show="true" class="tracking-ad" data-mod="popu_81">
                             <div class="list_ad"> <span> <a data-pjax="" class="link_pjax" tabindex="0" href="#" title="点击查看详情" target="_blank"></a> </span> </div>
                             <div class="list_ad_mobile"> <span> <a class="link_pjax" tabindex="0" href="#" title="点击查看详情" target="_blank"></a> </span> </div>
